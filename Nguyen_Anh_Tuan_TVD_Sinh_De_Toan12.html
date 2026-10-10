@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=yes">
+<meta name="theme-color" content="#2457d6">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>nguyên Anh Tuấn TVD – Sinh đề Toán 12</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#172033;--muted:#657089;--line:#dce2ec;--accent:#2457d6;--ok:#138a55;--bad:#c53939;--warn:#a36a00}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+header{background:linear-gradient(135deg,#173b9a,#2457d6);color:#fff;padding:22px 18px;position:sticky;top:0;z-index:5}
+h1{margin:0;font-size:25px}header p{margin:6px 0 0;opacity:.9}
+.wrap{max-width:1250px;margin:auto;padding:18px}.grid{display:grid;grid-template-columns:360px 1fr;gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:0 5px 18px #18264a0d;margin-bottom:16px}
+h2{font-size:18px;margin:0 0 12px}.sub{font-size:13px;color:var(--muted);line-height:1.45}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 5px}
+input,select,textarea,button{font:inherit}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}
+textarea{min-height:145px;resize:vertical}
+button{border:0;border-radius:10px;padding:10px 13px;background:#e9eefb;color:#173b9a;font-weight:700;cursor:pointer;margin:4px 3px 4px 0}
+button.primary{background:var(--accent);color:#fff}.danger{background:#fdecec;color:var(--bad)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.filebox{border:2px dashed #b9c5e2;border-radius:12px;padding:18px;text-align:center;background:#f8faff}
+.badge{display:inline-block;border-radius:99px;padding:5px 9px;font-size:12px;background:#eef2fb;margin:3px}.ok{color:var(--ok);background:#eaf8f1}.bad{color:var(--bad);background:#fdecec}.warn{color:var(--warn);background:#fff6df}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.kpi{border:1px solid var(--line);border-radius:12px;padding:11px}.kpi b{display:block;font-size:20px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}th{background:#f4f6fb}
+.q{border:1px solid var(--line);border-radius:12px;padding:13px;margin:10px 0}.q h3{margin:0 0 8px;font-size:15px}.q pre{white-space:pre-wrap;font-family:inherit;line-height:1.5;margin:0}
+.small{font-size:12px;color:var(--muted)}.status{padding:10px;border-radius:10px;margin-top:8px}.status.ok{background:#edf9f3}.status.bad{background:#fff0f0}.status.warn{background:#fff7e4}
+.tabs{display:flex;gap:6px;overflow:auto;margin-bottom:12px}.tabs button.active{background:#2457d6;color:#fff}
+footer{text-align:center;color:var(--muted);padding:22px;font-size:12px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}header{position:static}}
+@media print{header,.left,.no-print,footer{display:none!important}.wrap{max-width:none;padding:0}.grid{display:block}.card{box-shadow:none;border:0}.q{break-inside:avoid}}
+
+/* ===== Universal Web/PWA layer ===== */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{min-height:100vh;overflow-x:hidden}
+button,input,select,textarea{min-height:42px}
+button{touch-action:manipulation}
+.appbar{display:flex;justify-content:flex-end;gap:8px;margin-top:10px;flex-wrap:wrap}
+.appbar button{background:#ffffff22;color:#fff;border:1px solid #ffffff55}
+.install-note{display:none;margin:10px auto 0;max-width:1250px;padding:0 18px}
+.install-note .inner{background:#fff;border:1px solid #dce2ec;border-radius:12px;padding:10px 12px;color:#172033}
+.mobile-nav{display:none;position:sticky;bottom:0;z-index:20;background:#fff;border-top:1px solid var(--line);padding:6px;box-shadow:0 -5px 18px #18264a12}
+.mobile-nav button{flex:1;margin:0;font-size:12px}
+.mobile-nav .row{display:flex;gap:6px}
+@media(max-width:900px){
+  header{padding:16px 14px}
+  h1{font-size:20px}
+  header p{font-size:12px}
+  .wrap{padding:12px}
+  .grid{grid-template-columns:1fr;gap:10px}
+  .card{padding:13px;border-radius:13px}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .tabs{scrollbar-width:none}
+  .mobile-nav{display:block}
+  .left{order:2}
+  main{order:1}
+  textarea{min-height:120px}
+  table{font-size:12px}
+}
+@media(max-width:520px){
+  .wrap{padding:8px}
+  .card{padding:11px}
+  .kpi b{font-size:18px}
+  button{width:100%;margin:4px 0}
+  .appbar button{width:auto}
+  .filebox{padding:13px}
+  .q{padding:10px}
+  h2{font-size:16px}
+}
+@media(orientation:landscape) and (max-height:600px){
+  header{position:static}
+}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap" style="padding:0">
+    <h1>nguyên Anh Tuấn TVD</h1>
+    <p>Trình sinh đề Toán 12 thực tế – Chương trình GDPT 2018 · Sinh hệ số có kiểm soát · Đa thiết bị</p>
+    <div class="appbar no-print">
+      <button onclick="scrollToSection('config')">⚙ Cấu hình</button>
+      <button onclick="scrollToSection('results')">📄 Kết quả</button>
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})">⌃ Lên đầu</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="grid">
+<aside class="left">
+<div class="card">
+<h2>1. Nạp đề mẫu</h2>
+<div class="filebox">
+  <input id="file" type="file" accept=".docx,.pdf,.xlsx,.xls,.csv,.txt,.html,.htm,.json" multiple>
+  <div class="sub" style="margin-top:8px">Hỗ trợ: Word, PDF, Excel, CSV, TXT, HTML, JSON.<br>Chọn 1 hoặc nhiều file mẫu.</div>
+</div>
+<div id="fileStatus"></div>
+<button onclick="clearFiles()" class="danger">Xóa dữ liệu mẫu</button>
+</div>
+
+<div class="card" id="config">
+<h2>2. Cấu hình sinh đề</h2>
+<label>Chủ đề</label>
+<select id="topic"></select>
+<label>Cấu trúc đề</label>
+<select id="structure" onchange="toggleStructure()">
+<option value="bo" selected>Chuẩn 3 phần – 12 MCQ + 4 Đúng/Sai + 6 Trả lời ngắn</option>
+<option value="custom">Tùy chỉnh số câu</option>
+</select>
+<div id="countsBox" style="display:none">
+<label>Phần I – Trắc nghiệm nhiều lựa chọn</label><input id="n1" type="number" min="1" max="50" value="12">
+<label>Phần II – Đúng/Sai</label><input id="n2" type="number" min="1" max="20" value="4">
+<label>Phần III – Trả lời ngắn</label><input id="n3" type="number" min="1" max="20" value="6">
+</div>
+<label>Số mã đề</label><input id="forms" type="number" min="1" max="100" value="4">
+<label>Độ biến thiên hệ số</label>
+<select id="level"><option value="safe">An toàn – ít thay đổi</option><option value="medium" selected>Vừa – cân bằng</option><option value="wide">Rộng – nhiều biến thể</option></select>
+<label>Hạt ngẫu nhiên (seed)</label><input id="seed" value="">
+<label>Cho phép số thập phân</label><select id="decimal"><option value="no">Không</option><option value="yes">Có</option></select>
+<button class="primary" onclick="generate()">⚡ Sinh đề</button>
+<button onclick="regenerate()">↻ Sinh lại seed khác</button>
+</div>
+
+<div class="card">
+<h2>3. Quy tắc an toàn</h2>
+<div class="sub">
+<span class="badge ok">✓ dương</span>
+<span class="badge ok">✓ mẫu số ≠ 0</span>
+<span class="badge ok">✓ log: cơ số &gt; 0, ≠1</span>
+<span class="badge ok">✓ log: đối số &gt;0</span>
+<span class="badge ok">✓ căn: biểu thức ≥0</span>
+<span class="badge ok">✓ xác suất ∈ [0,1]</span>
+<span class="badge ok">✓ phần trăm ∈ [0,100]</span>
+<span class="badge ok">✓ thời gian/quãng đường hợp lý</span>
+<span class="badge ok">✓ kiểm tra kết quả hữu hạn</span>
+</div>
+<p class="small">Kiểm soát tự động: miền giá trị, tính hữu hạn, độ gần của phương án nhiễu và tính nhất quán đơn vị ở các dạng đã lập trình. Các phương án nhiễu ưu tiên lỗi thường gặp như nhầm công thức, bỏ bước, đổi sai đơn vị hoặc tính trung bình sai. Dữ liệu mô hình vẫn cần giáo viên duyệt trước khi dùng chính thức.</p>
+</div>
+</aside>
+
+<main>
+<div class="card">
+<h2>Thư viện chủ đề Toán 12 thực tế – CT 2018</h2>
+<div id="topicBadges"></div>
+</div>
+
+<div class="card">
+<h2>Đề mẫu đã đọc / nội dung mẫu</h2>
+<textarea id="sample" placeholder="Nếu file được đọc thành công, nội dung trích xuất sẽ hiện ở đây. Bạn cũng có thể dán trực tiếp một đề mẫu vào ô này."></textarea>
+<div>
+<button onclick="analyze()">🔎 Phân tích mẫu</button>
+<button onclick="saveTemplate()">💾 Lưu mẫu vào trình duyệt</button>
+<button onclick="loadTemplate()">↥ Nạp mẫu đã lưu</button>
+</div>
+<div id="analysis"></div>
+</div>
+
+<div class="card">
+<div class="kpis">
+<div class="kpi"><span class="small">Mã đề</span><b id="kForms">0</b></div>
+<div class="kpi"><span class="small">Câu</span><b id="kQuestions">0</b></div>
+<div class="kpi"><span class="small">Biến thể hợp lệ</span><b id="kValid">0</b></div>
+<div class="kpi"><span class="small">Cảnh báo</span><b id="kWarn">0</b></div>
+</div>
+</div>
+
+<div class="card no-print">
+<h2>Xuất kết quả</h2>
+<button class="primary" onclick="printExam()">🖨 In / Lưu PDF</button>
+<button onclick="downloadTXT()">⬇ Tải TXT</button>
+<button onclick="downloadJSON()">⬇ Tải JSON</button>
+<button onclick="downloadHTML()">⬇ Tải HTML đề</button>
+<button onclick="downloadAnswerKey()">🔑 Tải đáp án</button>
+</div>
+
+<div id="results"></div>
+</main>
+</div>
+<div class="mobile-nav no-print">
+  <div class="row">
+    <button onclick="scrollToSection('config')">⚙ Cấu hình</button>
+    <button onclick="generate()">⚡ Sinh đề</button>
+    <button onclick="scrollToSection('results')">📄 Đề</button>
+  </div>
+</div>
+<footer>nguyên Anh Tuấn TVD · Web App đa nền tảng · Dữ liệu mẫu được xử lý ngay trên trình duyệt trong phiên làm việc.</footer>
+</div>
+
+<script>
+const TOPICS = [
+["Hàm số – mô hình hóa, cực trị, tối ưu","Hàm số và bài toán thực tế"],
+["Mũ – logarit – tăng trưởng/giảm trưởng","Hàm số mũ và logarit"],
+["Nguyên hàm – tích phân – diện tích","Nguyên hàm, tích phân và ứng dụng"],
+["Thể tích – diện tích – mô hình không gian","Hình học không gian"],
+["Oxyz – khoảng cách, góc, vị trí","Phương pháp tọa độ trong không gian"],
+["Xác suất – biến ngẫu nhiên","Xác suất"],
+["Thống kê – mẫu số liệu ghép nhóm","Thống kê"],
+["Lãi suất – tài chính – trả góp","Toán tài chính"],
+["Vận tốc – quãng đường – chuyển động","Chuyển động"],
+["Năng suất – công việc – dòng chảy","Năng suất và công việc"],
+["Hỗn hợp – nồng độ – khối lượng","Hóa học thực tế"],
+["Kinh tế – chi phí – doanh thu – lợi nhuận","Kinh tế học thực tế"],
+["Sản xuất – tối ưu nguyên liệu","Sản xuất và tối ưu"],
+["Đo đạc – chiều cao – khoảng cách","Đo đạc thực tế"],
+["Mô hình dữ liệu – dự báo","Mô hình hóa dữ liệu"],
+["Tổng hợp tất cả chủ đề","Ngân hàng tổng hợp"]
+];
+
+const TEMPLATES = [
+{topic:0, title:"Chi phí – lợi nhuận", make:r=> {
+ let q=r.int(18,45), p=r.int(70,140), c=r.int(18,45), fixed=r.int(300,900);
+ return `Một cơ sở sản xuất ${q} sản phẩm mỗi ngày. Giá bán mỗi sản phẩm là ${p} nghìn đồng. Chi phí biến đổi cho mỗi sản phẩm là ${c} nghìn đồng và chi phí cố định mỗi ngày là ${fixed} nghìn đồng. Hãy tính lợi nhuận trong ngày và xác định điều kiện để lợi nhuận dương.`;
+}},
+{topic:0,title:"Tối ưu diện tích",make:r=>{
+ let P=r.int(80,180); return `Một khu đất hình chữ nhật có chu vi ${P} m. Gọi x (m) là chiều dài. Hãy lập hàm diện tích theo x và xác định kích thước để diện tích lớn nhất.`;
+}},
+{topic:1,title:"Tăng trưởng dân số",make:r=>{
+ let P=r.int(8,25), rate=r.int(2,8), y=r.int(3,12); return `Một quần thể có quy mô ban đầu ${P} nghìn cá thể, tăng trưởng đều với tốc độ ${rate}% mỗi năm. Theo mô hình mũ, sau ${y} năm quy mô xấp xỉ bao nhiêu?`;
+}},
+{topic:1,title:"Khấu hao",make:r=>{
+ let V=r.int(400,1800), rate=r.int(8,22), y=r.int(2,8); return `Một thiết bị có giá trị ban đầu ${V} triệu đồng, mỗi năm giảm ${rate}% so với năm trước. Hãy lập công thức giá trị sau t năm và tính giá trị sau ${y} năm.`;
+}},
+{topic:2,title:"Diện tích từ vận tốc",make:r=>{
+ let a=r.int(2,8), b=r.int(10,30), t=r.int(2,8); return `Vận tốc của một vật thay đổi theo thời gian t (giây) bởi v(t) = ${a}t + ${b} (m/s). Tính quãng đường vật đi được từ t = 0 đến t = ${t}.`;
+}},
+{topic:2,title:"Lưu lượng nước",make:r=>{
+ let a=r.int(1,5), b=r.int(8,20), t=r.int(2,7); return `Lưu lượng nước vào một bể theo thời gian t (phút) là q(t) = ${a}t + ${b} (lít/phút). Tính lượng nước vào bể trong ${t} phút đầu.`;
+}},
+{topic:3,title:"Bể chứa",make:r=>{
+ let a=r.int(3,9), b=r.int(5,14), h=r.int(2,8); return `Một bể có dạng hình hộp chữ nhật với chiều dài ${a} m, chiều rộng ${b} m và chiều cao ${h} m. Tính thể tích bể và diện tích cần sơn mặt ngoài theo dữ kiện thích hợp.`;
+}},
+{topic:4,title:"Khoảng cách điểm – mặt phẳng",make:r=>{
+ let a=r.int(1,6), b=r.int(1,6), c=r.int(1,6), d=r.int(3,15); return `Trong không gian Oxyz, cho điểm M(${a};${b};${c}) và mặt phẳng (P): x + 2y + 2z − ${d} = 0. Tính khoảng cách từ M đến (P).`;
+}},
+{topic:5,title:"Xác suất sản phẩm",make:r=>{
+ let n=r.int(60,150), bad=r.int(5,Math.max(6,Math.floor(n*.2))); return `Một lô có ${n} sản phẩm, trong đó có ${bad} sản phẩm lỗi. Chọn ngẫu nhiên một sản phẩm. Tính xác suất chọn được sản phẩm tốt.`;
+}},
+{topic:5,title:"Hai lần thử",make:r=>{
+ let p=r.int(2,8)/10; return `Một phép thử có xác suất thành công p = ${p.toFixed(1)}. Thực hiện độc lập 2 lần. Tính xác suất có đúng một lần thành công.`;
+}},
+{topic:6,title:"Trung bình mẫu",make:r=>{
+ let n=r.int(40,120), mean=r.int(45,85), h=r.int(5,18); return `Một mẫu gồm ${n} sản phẩm có khối lượng trung bình ${mean} g. Sau khi bổ sung một nhóm sản phẩm có khối lượng trung bình ${mean+h} g, giá trị trung bình mới tăng lên. Hãy thiết lập công thức tính trung bình mẫu mới theo số sản phẩm bổ sung.`;
+}},
+{topic:7,title:"Lãi kép",make:r=>{
+ let V=r.int(50,500), rate=r.int(5,12), years=r.int(2,7); return `Gửi ${V} triệu đồng với lãi suất ${rate}%/năm theo hình thức lãi kép, kỳ hạn 1 năm. Bỏ qua thuế và phí. Tính số tiền nhận được sau ${years} năm.`;
+}},
+{topic:7,title:"Trả góp",make:r=>{
+ let V=r.int(80,500), rate=r.int(6,15), months=r.int(12,36); return `Một khoản vay ${V} triệu đồng có lãi suất danh nghĩa ${rate}%/năm, quy đổi theo tháng và trả đều trong ${months} tháng. Hãy mô hình hóa số tiền trả định kỳ theo công thức niên kim.`;
+}},
+{topic:8,title:"Chuyển động",make:r=>{
+ let v=r.int(30,70), t=r.int(1,5), a=r.int(1,4); return `Một xe chuyển động thẳng với vận tốc ban đầu ${v} km/h và gia tốc không đổi ${a} m/s². Hãy đổi đơn vị vận tốc và tính vận tốc sau ${t} giây.`;
+}},
+{topic:9,title:"Hai vòi nước",make:r=>{
+ let t1=r.int(4,10), t2=r.int(6,14); return `Hai vòi cùng chảy vào một bể. Nếu vòi A chảy một mình đầy bể trong ${t1} giờ và vòi B chảy một mình đầy bể trong ${t2} giờ, hãy tính thời gian để hai vòi cùng chảy đầy bể.`;
+}},
+{topic:9,title:"Năng suất lao động",make:r=>{
+ let a=r.int(6,14), b=r.int(8,18); return `Đội A hoàn thành một công việc trong ${a} ngày, đội B hoàn thành công việc đó trong ${b} ngày. Nếu hai đội cùng làm với năng suất không đổi, hãy tính thời gian hoàn thành công việc.`;
+}},
+{topic:10,title:"Nồng độ dung dịch",make:r=>{
+ let V=r.int(10,40), c=r.int(8,30), add=r.int(5,20); return `Có ${V} lít dung dịch nồng độ ${c}%. Thêm ${add} lít nước tinh khiết. Tính nồng độ phần trăm mới của dung dịch, giả sử thể tích cộng được trực tiếp.`;
+}},
+{topic:11,title:"Doanh thu – chi phí",make:r=>{
+ let a=r.int(1,5), b=r.int(20,60), c=r.int(10,30); return `Doanh thu (triệu đồng) khi bán x sản phẩm được mô hình bởi R(x) = ${b}x − ${a}x², còn chi phí là C(x) = ${c}x + ${b}. Với x trong miền sản xuất cho phép, hãy lập hàm lợi nhuận và tìm điểm hòa vốn bằng mô hình đại số.`;
+}},
+{topic:12,title:"Tối ưu nguyên liệu",make:r=>{
+ let S=r.int(80,200), w=r.int(2,8); return `Một cơ sở cần sản xuất một hộp chữ nhật không nắp có thể tích ${S} dm³. Chi phí vật liệu đáy gấp ${w} lần chi phí vật liệu thành bên. Hãy thiết lập bài toán tối ưu chi phí theo kích thước hộp.`;
+}},
+{topic:13,title:"Đo chiều cao",make:r=>{
+ let d=r.int(20,80), angle=r.int(25,55); return `Đứng cách chân một cột thẳng đứng ${d} m, góc nâng từ mắt đến đỉnh cột là ${angle}°. Bỏ qua chiều cao mắt. Hãy lập công thức tính chiều cao cột và tính giá trị gần đúng.`;
+}},
+{topic:14,title:"Dự báo tuyến tính",make:r=>{
+ let y0=r.int(80,160), k=r.int(3,12), years=r.int(2,6); return `Một chỉ số kinh tế được mô hình hóa gần đúng bởi y(t) = ${y0} + ${k}t, trong đó t tính theo năm. Hãy dự báo chỉ số sau ${years} năm và giải thích ý nghĩa hệ số góc.`;
+}}
+];
+
+let files=[], generated=[], lastSeed="";
+
+function $(id){return document.getElementById(id)}
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function rng(seed){let x=seed>>>0;return {next(){x+=0x6D2B79F5;let t=x;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296},int(a,b){return Math.floor(this.next()*(b-a+1))+a},pick(a){return a[Math.floor(this.next()*a.length)]}}}
+function esc(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+
+function init(){
+  $("topic").innerHTML=TOPICS.map((x,i)=>`<option value="${i}">${i+1}. ${x[1]}</option>`).join("");
+  $("topicBadges").innerHTML=TOPICS.map((x,i)=>`<span class="badge">${i+1}. ${x[1]}</span>`).join("");
+  $("file").addEventListener("change",handleFiles);
+  $("topic").value="15";
+  loadTemplate();
+}
+async function handleFiles(e){
+ files=[...e.target.files]; let out=[];
+ for(const f of files){
+   try{
+     let txt="";
+     if(f.name.toLowerCase().endsWith(".txt")||f.name.toLowerCase().endsWith(".csv")||f.name.toLowerCase().endsWith(".html")||f.name.toLowerCase().endsWith(".htm")||f.name.toLowerCase().endsWith(".json")) txt=await f.text();
+     else if(f.name.toLowerCase().endsWith(".docx")) txt=await readDocx(f);
+     else if(f.name.toLowerCase().endsWith(".pdf")) txt=await readPdf(f);
+     else if(f.name.toLowerCase().endsWith(".xlsx")||f.name.toLowerCase().endsWith(".xls")) txt=await readXlsx(f);
+     $("sample").value += ( $("sample").value ? "\n\n===== "+f.name+" =====\n" : "") + txt;
+     out.push(`<div class="status ok">✓ ${esc(f.name)} · đã đọc/nhận dữ liệu</div>`);
+   }catch(err){out.push(`<div class="status warn">⚠ ${esc(f.name)} · chưa trích xuất được tự động. Bạn có thể mở file và dán nội dung vào ô mẫu.</div>`)}
+ }
+ $("fileStatus").innerHTML=out.join("");
+ analyze();
+}
+async function readDocx(f){
+ if(!window.mammoth){await loadScript("https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js")}
+ const a=await f.arrayBuffer(), r=await mammoth.extractRawText({arrayBuffer:a}); return r.value;
+}
+async function readPdf(f){
+ if(!window.pdfjsLib){await loadScript("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs","module")}
+ if(!window.pdfjsLib) throw new Error("PDF library");
+ const a=await f.arrayBuffer(), pdf=await pdfjsLib.getDocument({data:a}).promise; let s="";
+ for(let i=1;i<=pdf.numPages;i++){const p=await pdf.getPage(i), c=await p.getTextContent();s+=c.items.map(x=>x.str).join(" ")+"\\n";}
+ return s;
+}
+async function readXlsx(f){
+ if(!window.XLSX){await loadScript("https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js")}
+ const a=await f.arrayBuffer(), wb=XLSX.read(a,{type:"array"}); let s="";
+ wb.SheetNames.forEach(n=>{s+="\\n--- "+n+" ---\\n"+XLSX.utils.sheet_to_csv(wb.Sheets[n])});return s;
+}
+function loadScript(src,type){
+ return new Promise((res,rej)=>{let s=document.createElement("script");s.src=src;if(type)s.type=type;s.onload=res;s.onerror=rej;document.head.appendChild(s)})
+}
+function analyze(){
+ const t=$("sample").value.trim(), nums=(t.match(/(?<![A-Za-z])[-+]?\\d+(?:[.,]\\d+)?/g)||[]).length;
+ const topics=TOPICS.filter((_,i)=>TEMPLATES.some(x=>x.topic===i && t.toLowerCase().includes(x.title.split(" ")[0].toLowerCase())));
+ $("analysis").innerHTML=t?`<div class="status ok">✓ Đã nhận ${t.length.toLocaleString("vi-VN")} ký tự · phát hiện khoảng ${nums} số/hệ số. ${topics.length?`Gợi ý chủ đề: ${topics.map(x=>x[1]).join(", ")}`:"Có thể chọn chủ đề thủ công ở cột bên trái."}</div>`:`<div class="status warn">Chưa có đề mẫu. Bạn vẫn có thể sinh từ thư viện mẫu tích hợp.</div>`;
+}
+function randSeed(){return Math.floor(Math.random()*0xffffffff)}
+function regenerate(){$("seed").value=randSeed().toString(16);generate()}
+function pickTemplates(topic,r){
+ let arr=TEMPLATES.filter(x=>topic==15 || x.topic==topic); return arr.length?arr:TEMPLATES;
+}
+function validate(text){
+ const nums=[...(text.match(/[-+]?\\d+(?:\\.\\d+)?/g)||[])].map(Number).filter(Number.isFinite);
+ let warnings=[];
+ if(nums.some(x=>x<0)) warnings.push("Có hệ số âm; cần kiểm tra ngữ cảnh.");
+ if(/x\\s*\\+\\s*2y\\s*\\+\\s*2z/.test(text) && nums.length>10) {}
+ if(/xác suất/i.test(text) && nums.some(x=>x>1 && x<100)) warnings.push("Xác suất nên biểu diễn dưới dạng số từ 0 đến 1.");
+ if(/nồng độ|phần trăm/i.test(text) && nums.some(x=>x>100)) warnings.push("Có giá trị phần trăm >100.");
+ if(/log/i.test(text) && nums.some(x=>x<=0)) warnings.push("Biểu thức log cần kiểm tra miền xác định.");
+ if(/căn|sqrt/i.test(text) && nums.some(x=>x<0)) warnings.push("Biểu thức dưới căn cần không âm.");
+ if(/lít|m³|dm³|km|m\/s|kg|triệu đồng|ngày|giờ|phút/i.test(text) && nums.some(x=>Math.abs(x)>1000000)) warnings.push("Có đại lượng quá lớn, cần xem lại tính thực tế.");
+ return warnings;
+}
+function toggleStructure(){
+  $("countsBox").style.display=$("structure").value==="custom"?"block":"none";
+}
+function structureCounts(){
+  if($("structure").value==="bo") return {mcq:12,tf:4,short:6};
+  return {mcq:Math.max(1,+$("n1").value||12),tf:Math.max(1,+$("n2").value||4),short:Math.max(1,+$("n3").value||6)};
+}
+function shuffle(a,r){a=[...a];for(let i=a.length-1;i>0;i--){let j=r.int(0,i);[a[i],a[j]]=[a[j],a[i]]}return a}
+
+// ===== Bộ sinh câu hỏi có đáp án được tính từ dữ kiện =====
+function fmt(n, digits=2){
+  if(!Number.isFinite(n)) return "không xác định";
+  const x=Math.round(n*1000000)/1000000;
+  return String(Number(x.toFixed(digits)));
+}
+function nearUnique(correct, candidates, topic, r, precision=2){
+  // Chỉ nhận nhiễu hữu hạn, khác đáp án, đúng miền giá trị và cùng thang đo.
+  const isProbability = topic===5;
+  const nonNegative = [0,1,2,3,4,5,6,7,8,9,10,13,15].includes(topic);
+  const seen = new Set([fmt(correct,precision)]);
+  const out=[];
+  const acceptable = n => {
+    if(!Number.isFinite(n) || seen.has(fmt(n,precision))) return false;
+    if(isProbability && (n<0 || n>1)) return false;
+    if(nonNegative && n<0) return false;
+    // Tránh phương án lệch thang đo quá xa; với đáp án gần 0 vẫn cho sai số tuyệt đối hợp lý.
+    const scale=Math.max(Math.abs(correct),1);
+    if(Math.abs(n-correct)>Math.max(scale*.35,2)) return false;
+    return true;
+  };
+  for(const v of candidates||[]){
+    const n=Number(v);
+    if(acceptable(n)){out.push(n);seen.add(fmt(n,precision));}
+    if(out.length===3) break;
+  }
+  // Khi công thức sai quen thuộc bị trùng, sinh nhiễu gần đáp án theo các sai lầm tính toán nhỏ,
+  // không dùng số ngẫu nhiên xa ngữ cảnh.
+  const scale=Math.max(Math.abs(correct),1);
+  const offsets = isProbability
+    ? [-.04,.04,-.08,.08,-.02,.02,-.12,.12]
+    : (Number.isInteger(correct)
+      ? [-2,2,-1,1,-3,3,-4,4,-5,5]
+      : [-.04,.04,-.08,.08,-.02,.02,-.12,.12,-.16,.16]);
+  for(const off of offsets){
+    if(out.length===3) break;
+    let n=correct + (Number.isInteger(correct)?off:off*scale);
+    if(isProbability) n=Math.min(.99,Math.max(.01,n));
+    if(acceptable(n)){out.push(n);seen.add(fmt(n,precision));}
+  }
+  // Fallback cuối cùng: các giá trị gần đáp án, vẫn phải qua kiểm tra miền và thang đo.
+  for(let k=1;out.length<3 && k<100;k++){
+    let n=correct+(k%2?1:-1)*scale*(.01*k);
+    if(isProbability) n=Math.min(.99,Math.max(.01,n));
+    if(acceptable(n)){out.push(n);seen.add(fmt(n,precision));}
+  }
+  return out.slice(0,3);
+}
+function mathData(topic,r){
+  const variant=r.int(0,2);
+  switch(topic){
+  case 0:{
+    const P=r.int(40,100), x=P/4, A=P*P/16;
+    const ask=[
+      `Một mảnh đất hình chữ nhật có chu vi ${P} m. Gọi x (m) là chiều dài và giả sử chiều rộng là ${P/2}-x. Biểu thức diện tích S(x) là gì?`,
+      `Với mảnh đất hình chữ nhật có chu vi ${P} m, diện tích lớn nhất bằng bao nhiêu?`,
+      `Một hình chữ nhật có chu vi ${P} m. Khi diện tích lớn nhất, độ dài mỗi cạnh của hình vuông tương ứng là bao nhiêu?`
+    ];
+    return {title:"Tối ưu diện tích",text:ask[variant],answer:variant===0?`−x² + ${P/2}x`:variant===1?fmt(A):`${fmt(x)} m × ${fmt(x)} m`,num:variant===0?null:variant===1?A:x,unit:variant===1?"m²":"",precision:2,expressionWrong:[`−x² + ${P}x`,`−x² + ${P/4}x`,`x² − ${P/2}x`],wrong:variant===0?[]:[A*.90,A*.96,A*.84],facts:[
+      {text:`Diện tích lớn nhất là ${fmt(A)} m².`,answer:true},
+      {text:`Hình chữ nhật đạt diện tích lớn nhất là hình vuông cạnh ${fmt(x)} m.`,answer:true},
+      {text:`Diện tích lớn nhất bằng ${fmt(P*P/8)} m².`,answer:false},
+      {text:`Với chu vi cố định, tăng độ chênh lệch hai cạnh sẽ làm diện tích tăng.`,answer:false}
+    ],short:`${fmt(A)}`};
+  }
+  case 1:{
+    const P=r.int(5,20), rate=r.int(2,8), t=r.int(2,6), val=P*Math.pow(1+rate/100,t);
+    return {title:"Tăng trưởng theo mô hình mũ",text:`Một quần thể ban đầu có ${P} nghìn cá thể, tăng ${rate}% mỗi năm theo mô hình mũ. Hãy tính quy mô sau ${t} năm (nghìn cá thể), làm tròn đến hai chữ số thập phân.`,num:val,answer:fmt(val),unit:"nghìn cá thể",wrong:[P*(1+rate*t/100),P*Math.pow(1+rate/100,t-1),P*Math.pow(1+rate/100,t+1)],short:fmt(val),facts:[
+      {text:`Công thức mô hình là P(t) = ${P}·(1 + ${rate}/100)^t.`,answer:true},
+      {text:`Sau ${t} năm, quy mô bằng ${fmt(val)} nghìn cá thể (làm tròn hai chữ số).`,answer:true},
+      {text:`Tốc độ tăng ${rate}% mỗi năm có nghĩa mỗi năm tăng thêm đúng ${rate} nghìn cá thể.`,answer:false},
+      {text:`Quy mô sau ${t} năm nhỏ hơn quy mô ban đầu.`,answer:false}
+    ]};
+  }
+  case 2:{
+    const a=r.int(1,5), b=r.int(5,20), t=r.int(2,8), val=a*t*t/2+b*t;
+    return {title:"Tích phân vận tốc",text:`Vận tốc của một vật trên khoảng thời gian 0 đến ${t} giây là v(t) = ${a}t + ${b} (m/s). Tính quãng đường vật đi được trong khoảng này.`,num:val,answer:fmt(val)+" m",unit:"m",wrong:[(a*t+b)*t,val+a*t*t/2,val-b*t] ,short:fmt(val),facts:[
+      {text:`Quãng đường được tính bằng tích phân ∫₀⁽${t}⁾ v(t)dt.`,answer:true},
+      {text:`Quãng đường bằng ${fmt(val)} m.`,answer:true},
+      {text:`Có thể tính quãng đường bằng vận tốc cuối nhân thời gian trong mọi trường hợp vận tốc biến thiên.`,answer:false},
+      {text:`Vận tốc không đổi trong suốt khoảng thời gian đã cho.`,answer:false}
+    ]};
+  }
+  case 3:{
+    const a=r.int(3,10), b=r.int(2,8), h=r.int(2,7), val=a*b*h;
+    return {title:"Thể tích hình hộp",text:`Một bể dạng hình hộp chữ nhật có chiều dài ${a} m, chiều rộng ${b} m và chiều cao ${h} m. Tính thể tích bể.`,num:val,answer:val+" m³",unit:"m³",wrong:[a*b*h+a*b,val+a*b,val-a*b] ,short:String(val),facts:[
+      {text:`Thể tích bể bằng ${val} m³.`,answer:true},
+      {text:`Diện tích đáy của bể bằng ${a*b} m².`,answer:true},
+      {text:`Thể tích bể bằng ${2*(a*b+a*h+b*h)} m³.`,answer:false},
+      {text:`Nếu tăng chiều cao gấp đôi và giữ nguyên đáy, thể tích cũng gấp đôi.`,answer:true}
+    ]};
+  }
+  case 4:{
+    const a=r.int(1,5),b=r.int(1,5),c=r.int(1,5),d=r.int(4,18), num=Math.abs(a+2*b+2*c-d), den=3, val=num/den;
+    return {title:"Khoảng cách trong Oxyz",text:`Trong không gian Oxyz, cho M(${a}; ${b}; ${c}) và mặt phẳng (P): x + 2y + 2z − ${d} = 0. Tính khoảng cách từ M đến (P).`,num:val,answer:fmt(val),unit:"đơn vị",wrong:[Math.abs(a+2*b+2*c-d)/Math.sqrt(5),Math.abs(a+2*b+2*c-d)/3+0.5,Math.abs(a+2*b+2*c-d)/2] ,short:fmt(val),facts:[
+      {text:`Khoảng cách được tính bằng giá trị tuyệt đối của biểu thức mặt phẳng tại M chia cho √(1²+2²+2²).`,answer:true},
+      {text:`Khoảng cách từ M đến (P) bằng ${fmt(val)}.`,answer:true},
+      {text:`Mẫu số trong công thức khoảng cách là √5.`,answer:false},
+      {text:`Khoảng cách từ một điểm đến mặt phẳng có thể âm.`,answer:false}
+    ]};
+  }
+  case 5:{
+    const n=r.int(40,120), bad=r.int(4,Math.floor(n*.2)), good=n-bad, val=good/n;
+    return {title:"Xác suất chọn sản phẩm tốt",text:`Một lô có ${n} sản phẩm, trong đó ${bad} sản phẩm lỗi. Chọn ngẫu nhiên một sản phẩm. Tính xác suất chọn được sản phẩm tốt.`,num:val,answer:fmt(val,4),unit:"",wrong:[bad/n,(good-1)/n,(good+1)/n] ,short:fmt(val,4),facts:[
+      {text:`Số sản phẩm tốt là ${good}.`,answer:true},
+      {text:`Xác suất chọn được sản phẩm tốt bằng ${fmt(val,4)} (làm tròn bốn chữ số thập phân).`,answer:true},
+      {text:`Xác suất chọn sản phẩm lỗi bằng ${fmt(val,4)}.`,answer:false},
+      {text:`Xác suất chọn sản phẩm tốt lớn hơn 1.`,answer:false}
+    ]};
+  }
+  case 6:{
+    const n=r.int(20,80), m=r.int(10,40), x=r.int(50,80), y=x+r.int(5,20), val=(n*x+m*y)/(n+m);
+    return {title:"Số trung bình có trọng số",text:`Nhóm A có ${n} sản phẩm, khối lượng trung bình ${x} g; nhóm B có ${m} sản phẩm, khối lượng trung bình ${y} g. Tính khối lượng trung bình của cả hai nhóm.`,num:val,answer:fmt(val)+" g",unit:"g",wrong:[(x+y)/2,(n*x+m*y)/(n+m+5),val+(y-x)/(n+m)] ,short:fmt(val),facts:[
+      {text:`Tổng khối lượng hai nhóm bằng ${fmt(n*x+m*y)} g.`,answer:true},
+      {text:`Khối lượng trung bình chung được tính bằng trung bình cộng đơn giản của x và y trong mọi trường hợp.`,answer:false},
+      {text:`Khối lượng trung bình chung nằm giữa ${x} g và ${y} g.`,answer:true},
+      {text:`Khối lượng trung bình chung bằng ${fmt(val)} g.`,answer:true}
+    ]};
+  }
+  case 7:{
+    const V=r.int(50,300), rate=r.int(4,10), t=r.int(2,6), val=V*Math.pow(1+rate/100,t);
+    return {title:"Lãi kép",text:`Gửi ${V} triệu đồng với lãi suất ${rate}%/năm theo hình thức lãi kép, kỳ hạn một năm. Bỏ qua thuế và phí. Tính số tiền sau ${t} năm (triệu đồng), làm tròn hai chữ số thập phân.`,num:val,answer:fmt(val),unit:"triệu đồng",wrong:[V*(1+rate*t/100),V*Math.pow(1+rate/100,t-1),V*Math.pow(1+rate/100,t+1)] ,short:fmt(val),facts:[
+      {text:`Công thức lãi kép là A = ${V}(1 + ${rate}/100)^t.`,answer:true},
+      {text:`Số tiền cuối kỳ bằng ${fmt(val)} triệu đồng (làm tròn hai chữ số).`,answer:true},
+      {text:`Tiền lãi mỗi năm luôn bằng nhau khi gửi lãi kép.`,answer:false},
+      {text:`Nếu lãi suất dương thì số tiền cuối kỳ lớn hơn số tiền gửi ban đầu.`,answer:true}
+    ]};
+  }
+  case 8:{
+    const v=r.int(30,90), t=r.int(2,8), a=r.int(1,3), v0=v/3.6, vf=v0+a*t;
+    return {title:"Chuyển động thẳng biến đổi đều",text:`Một xe có vận tốc ban đầu ${v} km/h và gia tốc không đổi ${a} m/s². Đổi vận tốc ban đầu sang m/s rồi tính vận tốc sau ${t} giây.`,num:vf,answer:fmt(vf)+" m/s",unit:"m/s",wrong:[v0+a*(t-1),v0+a*t+1,v0+a*(t+1)] ,short:fmt(vf),facts:[
+      {text:`Vận tốc ban đầu đổi sang m/s bằng ${fmt(v0)} m/s.`,answer:true},
+      {text:`Vận tốc sau ${t} giây bằng ${fmt(vf)} m/s.`,answer:true},
+      {text:`Có thể cộng trực tiếp số đo km/h với gia tốc m/s² mà không đổi đơn vị.`,answer:false},
+      {text:`Với gia tốc dương, vận tốc tăng theo thời gian.`,answer:true}
+    ]};
+  }
+  case 9:{
+    const t1=r.int(3,10),t2=r.int(4,12),val=1/(1/t1+1/t2);
+    return {title:"Năng suất làm chung",text:`Vòi A chảy một mình đầy bể trong ${t1} giờ, vòi B chảy một mình đầy bể trong ${t2} giờ. Hai vòi cùng chảy với lưu lượng không đổi. Tính thời gian làm đầy bể, làm tròn hai chữ số thập phân.`,num:val,answer:fmt(val)+" giờ",unit:"giờ",wrong:[(t1+t2)/2,val+0.5,val-0.5] ,short:fmt(val),facts:[
+      {text:`Năng suất chung bằng 1/${t1} + 1/${t2} bể mỗi giờ.`,answer:true},
+      {text:`Thời gian làm chung bằng ${fmt(val)} giờ (làm tròn hai chữ số).`,answer:true},
+      {text:`Hai vòi cùng chảy thì thời gian luôn bằng tổng thời gian mỗi vòi chảy riêng.`,answer:false},
+      {text:`Thời gian làm chung nhỏ hơn thời gian của vòi nhanh hơn.`,answer:false}
+    ]};
+  }
+  case 10:{
+    const V=r.int(10,40), c=r.int(10,35), water=r.int(5,20), val=V*c/(V+water);
+    return {title:"Pha loãng dung dịch",text:`Có ${V} lít dung dịch nồng độ ${c}%. Thêm ${water} lít nước tinh khiết. Giả sử thể tích cộng được trực tiếp và lượng chất tan không đổi. Tính nồng độ mới (%), làm tròn hai chữ số thập phân.`,num:val,answer:fmt(val)+"%",unit:"%",wrong:[c*V/(V+water/2),c*V/(V+water+2),val-1] ,short:fmt(val),facts:[
+      {text:`Lượng chất tan không đổi khi chỉ thêm nước tinh khiết.`,answer:true},
+      {text:`Nồng độ mới bằng ${fmt(val)}%.`,answer:true},
+      {text:`Sau khi thêm nước, nồng độ lớn hơn ${c}%.`,answer:false},
+      {text:`Thể tích dung dịch sau khi pha là ${V+water} lít theo giả thiết đề bài.`,answer:true}
+    ]};
+  }
+  case 11:{
+    const a=r.int(1,4), b=r.int(20,50), c=r.int(5,15), x=r.int(2,Math.max(2,Math.min(8,Math.floor((b-1)/a)))), R=b*x-a*x*x, C=c*x+b, profit=R-C;
+    return {title:"Doanh thu và lợi nhuận",text:`Doanh thu R(x) = ${b}x − ${a}x² và chi phí C(x) = ${c}x + ${b} (triệu đồng). Với mức sản lượng x = ${x}, tính lợi nhuận R(x) − C(x).`,num:profit,answer:fmt(profit)+" triệu đồng",unit:"triệu đồng",wrong:[R+C,R-C+b,profit-a] ,short:fmt(profit),facts:[
+      {text:`Hàm lợi nhuận là P(x) = −${a}x² + ${b-c}x − ${b}.`,answer:true},
+      {text:`Tại x = ${x}, lợi nhuận bằng ${fmt(profit)} triệu đồng.`,answer:true},
+      {text:`Lợi nhuận bằng tổng doanh thu và chi phí.`,answer:false},
+      {text:`Nếu lợi nhuận âm thì chi phí lớn hơn doanh thu tại mức sản lượng đó.`,answer:true}
+    ]};
+  }
+  case 12:{
+    const q=r.int(10,30), p=r.int(40,90), c=r.int(15,35), fixed=r.int(100,400);
+    const profit=(p-c)*q-fixed;
+    return {title:"Sản xuất và tối ưu lợi nhuận",text:`Một cơ sở sản xuất và bán x sản phẩm mỗi ngày. Giá bán mỗi sản phẩm là ${p} nghìn đồng, chi phí biến đổi mỗi sản phẩm là ${c} nghìn đồng, chi phí cố định là ${fixed} nghìn đồng/ngày. Với sản lượng x = ${q}, hãy tính lợi nhuận trong ngày (nghìn đồng).`,num:profit,answer:fmt(profit)+" nghìn đồng",unit:"nghìn đồng",wrong:[p*q-c*q-fixed,p*q-fixed,profit+fixed] ,short:fmt(profit),facts:[
+      {text:`Hàm lợi nhuận có dạng P(x) = (${p} − ${c})x − ${fixed}.`,answer:true},
+      {text:`Với x = ${q}, lợi nhuận bằng ${fmt(profit)} nghìn đồng.`,answer:true},
+      {text:`Chi phí cố định thay đổi tỉ lệ thuận với số sản phẩm sản xuất.`,answer:false},
+      {text:`Lợi nhuận dương khi doanh thu lớn hơn tổng chi phí.`,answer:true}
+    ]};
+  }
+  case 13:{
+    const d=r.int(20,80), angle=r.int(25,55), val=d*Math.tan(angle*Math.PI/180);
+    return {title:"Đo chiều cao bằng góc nâng",text:`Một người đứng cách chân cột ${d} m, góc nâng từ mắt đến đỉnh cột là ${angle}°. Bỏ qua chiều cao mắt. Tính chiều cao cột (m), làm tròn hai chữ số thập phân.`,num:val,answer:fmt(val)+" m",unit:"m",wrong:[d*Math.sin(angle*Math.PI/180),d*Math.tan((angle-3)*Math.PI/180),d*Math.tan((angle+3)*Math.PI/180)] ,short:fmt(val),facts:[
+      {text:`Có thể dùng hệ thức tan(${angle}°) = h/${d}.`,answer:true},
+      {text:`Chiều cao cột xấp xỉ ${fmt(val)} m.`,answer:true},
+      {text:`Chiều cao cột bằng ${d}·cos(${angle}°).`,answer:false},
+      {text:`Nếu giữ nguyên khoảng cách và tăng góc nâng trong khoảng 0°–90°, chiều cao suy ra tăng.`,answer:true}
+    ]};
+  }
+  default:{
+    const P=r.int(50,200), rate=r.int(3,12), t=r.int(2,5), val=P+rate*t;
+    return {title:"Mô hình tuyến tính",text:`Một chỉ số được mô hình hóa bởi y(t) = ${P} + ${rate}t. Hãy tính y(${t}).`,num:val,answer:String(val),unit:"",wrong:[P+rate*(t-1),P+rate*(t+1),P+rate*t-rate] ,short:String(val),facts:[
+      {text:`Hệ số góc của mô hình là ${rate}.`,answer:true},
+      {text:`y(${t}) = ${val}.`,answer:true},
+      {text:`Giá trị ban đầu của mô hình là ${rate}.`,answer:false},
+      {text:`Mô hình tăng ${rate} đơn vị mỗi đơn vị thời gian.`,answer:true}
+    ]};
+  }}
+}
+function questionData(tpl,r,kind){
+  const topic=tpl?tpl.topic:15;
+  let d=mathData(topic,r);
+  if(kind==="mcq"){
+    if(d.num===null){
+      const opts=shuffle([d.answer,...(d.expressionWrong||[])],r);
+      const answer=opts.indexOf(d.answer);
+      return {type:"mcq",title:d.title,text:d.text,options:opts.map((v,i)=>String.fromCharCode(65+i)+". "+v).join("\n"),answer:Math.max(0,answer),correctText:d.answer,w:[]};
+    }
+    const precision=d.precision||2;
+    const nums=nearUnique(d.num,d.wrong||[],topic,r,precision);
+    if(nums.length!==3) return {type:"mcq",title:d.title,text:d.text,options:"",answer:-1,correctText:fmt(d.num,precision),w:["Không tạo đủ 3 phương án nhiễu hợp lệ; cần kiểm tra câu hỏi này."]};
+    const opts=shuffle([d.num,...nums],r);
+    const correct=opts.findIndex(x=>fmt(x,precision)===fmt(d.num,precision));
+    return {type:"mcq",title:d.title,text:d.text,options:opts.map((v,i)=>String.fromCharCode(65+i)+". "+fmt(v,precision)+(d.unit?" "+d.unit:"")).join("\n"),answer:correct,correctText:fmt(d.num,precision)+(d.unit?" "+d.unit:""),w:[]};
+  }
+  if(kind==="tf"){
+    const facts=shuffle(d.facts,r).slice(0,4);
+    return {type:"tf",title:d.title,text:d.text,statements:facts.map(x=>({text:x.text,answer:x.answer})),w:[]};
+  }
+  return {type:"short",title:d.title,text:d.text+"\n\nYêu cầu: ghi kết quả theo đơn vị/độ chính xác nêu trong đề.",answer:d.short||d.answer,w:[]};
+}
+function makeMCQ(tpl,r,index){return questionData(tpl,r,"mcq")}
+function makeTF(tpl,r,index){return questionData(tpl,r,"tf")}
+function makeShort(tpl,r,index){return questionData(tpl,r,"short")}
+function getPool(topic){let arr=TEMPLATES.filter(x=>topic==15||x.topic===topic);return arr.length?arr:TEMPLATES}
+function generate(){
+  let seed=$("seed").value.trim()||Date.now().toString(16);$("seed").value=seed;lastSeed=seed;
+  const base=hash(seed),r=rng(base),topic=+$ ("topic").value,forms=Math.max(1,+$("forms").value||4),counts=structureCounts();
+  const pool=getPool(topic),out=[];
+  for(let f=1;f<=forms;f++){
+    let mcq=[],tf=[],short=[],warns=0;
+    for(let i=0;i<counts.mcq;i++){let q=makeMCQ(r.pick(pool),r,i);mcq.push(q);warns+=q.w.length}
+    for(let i=0;i<counts.tf;i++){let q=makeTF(r.pick(pool),r,i);tf.push(q);warns+=q.w.length}
+    for(let i=0;i<counts.short;i++){let q=makeShort(r.pick(pool),r,i);short.push(q);warns+=q.w.length}
+    out.push({code:String(101+f),mcq,tf,short,warns});
+  }
+  generated=out;render();
+}
+function render(){
+  const all=generated.flatMap(f=>[...f.mcq,...f.tf,...f.short]);
+  const valid=all.filter(q=>!q.w.length).length,warns=all.reduce((a,q)=>a+q.w.length,0);
+  $("kForms").textContent=generated.length;$("kQuestions").textContent=all.length;$("kValid").textContent=valid;$("kWarn").textContent=warns;
+  const topicName=TOPICS[+$ ("topic").value]?.[1]||"Tổng hợp";
+  $("results").innerHTML=generated.map(form=>`
+  <div class="card exam"><h2>MÃ ĐỀ ${form.code}</h2>
+  <div class="small">Seed: ${esc(lastSeed)} · Chủ đề: ${esc(topicName)} · Cấu trúc: 3 phần</div>
+  <h3>PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN</h3>
+  <p class="small">Thí sinh chọn một phương án đúng trong mỗi câu.</p>
+  ${form.mcq.map((q,i)=>`<div class="q"><h3>Câu ${i+1}. ${esc(q.title)}</h3><pre>${esc(q.text)}\n${esc(q.options)}</pre>${q.w.length?`<div class="status warn">⚠ ${q.w.join(" · ")}</div>`:`<div class="small" style="color:#138a55">✓ Qua kiểm tra an toàn</div>`}</div>`).join("")}
+  <h3>PHẦN II. TRẮC NGHIỆM ĐÚNG – SAI</h3>
+  <p class="small">Mỗi câu gồm 4 ý a), b), c), d); thí sinh xác định đúng hoặc sai.</p>
+  ${form.tf.map((q,i)=>`<div class="q"><h3>Câu ${i+1}. ${esc(q.title)}</h3><pre>${esc(q.text)}\n${q.statements.map((x,j)=>String.fromCharCode(97+j)+`) ${esc(x.text)}`).join("\n")}</pre>${q.w.length?`<div class="status warn">⚠ ${q.w.join(" · ")}</div>`:`<div class="small" style="color:#138a55">✓ Qua kiểm tra an toàn</div>`}</div>`).join("")}
+  <h3>PHẦN III. TRẮC NGHIỆM TRẢ LỜI NGẮN</h3>
+  <p class="small">Thí sinh ghi kết quả ngắn gọn vào ô trả lời.</p>
+  ${form.short.map((q,i)=>`<div class="q"><h3>Câu ${i+1}. ${esc(q.title)}</h3><pre>${esc(q.text)}</pre>${q.w.length?`<div class="status warn">⚠ ${q.w.join(" · ")}</div>`:`<div class="small" style="color:#138a55">✓ Qua kiểm tra an toàn</div>`}</div>`).join("")}
+  <details><summary><b>Đáp án mã đề ${form.code}</b></summary><div class="small"><p><b>Phần I:</b> ${form.mcq.map((q,i)=>`${i+1}. ${String.fromCharCode(65+q.answer)}`).join(" · ")}</p><p><b>Phần II:</b> ${form.tf.map((q,i)=>`${i+1}. ${q.statements.map(x=>x.answer?'Đ':'S').join('')}`).join(" · ")}</p><p><b>Phần III:</b> ${form.short.map((q,i)=>`${i+1}. ${q.answer}`).join(" · ")}</p></div></details>
+  </div>`).join("");
+}
+function printExam(){if(!generated.length)generate();window.print()}
+function download(name,text,type="text/plain"){
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)
+}
+function allText(){
+  return generated.map(f=>{
+    const parts=[["PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN",f.mcq],["PHẦN II. TRẮC NGHIỆM ĐÚNG – SAI",f.tf],["PHẦN III. TRẢ LỜI NGẮN",f.short]];
+    return `MÃ ĐỀ ${f.code}\\n\\n`+parts.map(([head,qs])=>head+"\\n"+qs.map((q,i)=>{
+      const extra=q.type==="mcq"?"\\n"+q.options:q.type==="tf"?"\\n"+q.statements.map((x,j)=>String.fromCharCode(97+j)+") "+x.text).join("\\n"):"";
+      return `Câu ${i+1}. ${q.title}\\n${q.text}${extra}`;
+    }).join("\\n\\n")).join("\\n\\n");
+  }).join("\\n\\n====================\\n\\n");
+}
+function downloadTXT(){if(!generated.length)generate();download("nguyen_Anh_Tuan_TVD_De_Toan12.txt",allText())}
+function downloadJSON(){if(!generated.length)generate();download("nguyen_Anh_Tuan_TVD_De_Toan12.json",JSON.stringify({app:"nguyên Anh Tuấn TVD",seed:lastSeed,generated},null,2),"application/json")}
+function downloadHTML(){
+  if(!generated.length)generate();
+  let body=`<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Đề Toán 12</title><style>body{font-family:Arial;max-width:900px;margin:30px auto;padding:0 16px}.q{margin:20px 0}pre{font-family:inherit;white-space:pre-wrap;line-height:1.5}</style><h1>nguyên Anh Tuấn TVD – Đề Toán 12</h1>${generated.map(f=>{
+    const qs=[...f.mcq,...f.tf,...f.short];
+    return `<h2>MÃ ĐỀ ${f.code}</h2><h3>PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN</h3>`+
+      f.mcq.map((q,i)=>`<div class=q><b>Câu ${i+1}. ${esc(q.title)}</b><pre>${esc(q.text)}\\n${esc(q.options)}</pre></div>`).join("")+
+      `<h3>PHẦN II. TRẮC NGHIỆM ĐÚNG – SAI</h3>`+
+      f.tf.map((q,i)=>`<div class=q><b>Câu ${i+1}. ${esc(q.title)}</b><pre>${esc(q.text)}\\n${q.statements.map((x,j)=>String.fromCharCode(97+j)+`) ${esc(x.text)}`).join("\\n")}</pre></div>`).join("")+
+      `<h3>PHẦN III. TRẢ LỜI NGẮN</h3>`+
+      f.short.map((q,i)=>`<div class=q><b>Câu ${i+1}. ${esc(q.title)}</b><pre>${esc(q.text)}</pre></div>`).join("");
+  }).join("<hr>")}</html>`;
+  download("nguyen_Anh_Tuan_TVD_De_Toan12.html",body,"text/html")
+}
+function saveTemplate(){localStorage.setItem("nguyenAnhTuanTVD_template",$("sample").value);$("analysis").innerHTML='<div class="status ok">✓ Đã lưu đề mẫu trên trình duyệt này.</div>'}
+function loadTemplate(){let s=localStorage.getItem("nguyenAnhTuanTVD_template");if(s){$("sample").value=s;analyze()}}
+function clearFiles(){files=[];$("file").value="";$("sample").value="";$("fileStatus").innerHTML="";$("analysis").innerHTML=""}
+init();
+</script>
+
+<script>
+function scrollToSection(id){
+  const el=document.getElementById(id)||document.getElementById('results');
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+
+</body></html>
