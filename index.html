@@ -1,0 +1,651 @@
+<!-- HEADER -->
+<header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="p-2 bg-indigo-600 text-white rounded-xl shadow-md shadow-indigo-100">
+                <i data-lucide="book-open-check" class="w-6 h-6"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-slate-800 text-sm sm:text-base leading-tight">LỊCH SỬ 12 - BÀI 1: LIÊN HỢP QUỐC</h1>
+                <p class="text-xs text-slate-500 font-medium">Chương trình GDPT 2018 - Kết Nối Tri Thức</p>
+            </div>
+        </div>
+
+        <!-- Timer Badge (Hidden initially) -->
+        <div id="timerContainer" class="hidden items-center gap-2 bg-amber-50 border border-amber-200 text-amber-700 px-3.5 py-1.5 rounded-full font-bold text-sm shadow-sm animate-pulse">
+            <i data-lucide="clock" class="w-4 h-4"></i>
+            <span id="timer">45:00</span>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN CONTAINER -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+    <!-- STEP 1: INFORM FORM -->
+    <div id="startScreen" class="max-w-xl mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-100">
+        <div class="text-center mb-6">
+            <span class="inline-block p-3 bg-indigo-50 text-indigo-600 rounded-full mb-3">
+                <i data-lucide="user-check" class="w-8 h-8"></i>
+            </span>
+            <h2 class="text-2xl font-bold text-slate-800">Thông Tin Thí Sinh</h2>
+            <p class="text-sm text-slate-500 mt-1">Vui lòng điền chính xác thông tin để bắt đầu bài kiểm tra</p>
+        </div>
+
+        <form id="infoForm" onsubmit="startQuiz(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Họ và tên học sinh <span class="text-rose-500">*</span></label>
+                <div class="relative">
+                    <i data-lucide="user" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="studentName" required placeholder="Nguyễn Văn A" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition text-sm">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Trường THPT <span class="text-rose-500">*</span></label>
+                    <div class="relative">
+                        <i data-lucide="school" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="schoolName" required placeholder="THPT Ba Đình" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition text-sm">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Lớp <span class="text-rose-500">*</span></label>
+                    <div class="relative">
+                        <i data-lucide="users" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="className" required placeholder="12A1" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition text-sm">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100 space-y-2 text-xs text-indigo-900">
+                <div class="flex items-center gap-2 font-semibold text-indigo-700">
+                    <i data-lucide="info" class="w-4 h-4"></i> Cấu trúc đề kiểm tra:
+                </div>
+                <p>• <strong>Phần I:</strong> 50 câu trắc nghiệm 4 lựa chọn chọn 1 đáp án đúng.</p>
+                <p>• <strong>Phần II:</strong> 4 câu trắc nghiệm Đúng/Sai (Mỗi câu gồm 4 ý a, b, c, d).</p>
+                <p>• <strong>Thời gian làm bài:</strong> 45 phút.</p>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-semibold rounded-xl shadow-lg shadow-indigo-200 transition flex items-center justify-center gap-2">
+                Bắt Đầu Làm Bài <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+        </form>
+
+        <!-- Leaderboard Shortcut -->
+        <div class="mt-6 pt-6 border-t border-slate-100 text-center">
+            <button onclick="showLeaderboard()" class="inline-flex items-center gap-2 text-xs font-semibold text-indigo-600 hover:text-indigo-800">
+                <i data-lucide="trophy" class="w-4 h-4"></i> Xem Bảng Xếp Hạng Đã Lưu
+            </button>
+        </div>
+    </div>
+
+    <!-- STEP 2: QUIZ INTERFACE -->
+    <div id="quizScreen" class="hidden grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <!-- Questions List (Left/Center Column) -->
+        <div class="lg:col-span-3 space-y-6">
+            
+            <!-- Part 1 -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="border-b border-slate-100 pb-3 mb-6">
+                    <h2 class="text-lg font-bold text-indigo-600 flex items-center gap-2">
+                        <span class="px-2.5 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-lg">PHẦN I</span>
+                        TRẮC NGHIỆM KHÁCH QUAN (Nhiều lựa chọn)
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">Chọn 01 phương án trả lời đúng nhất cho mỗi câu hỏi.</p>
+                </div>
+                <div id="part1Questions" class="space-y-6"></div>
+            </div>
+
+            <!-- Part 2 -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="border-b border-slate-100 pb-3 mb-6">
+                    <h2 class="text-lg font-bold text-indigo-600 flex items-center gap-2">
+                        <span class="px-2.5 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-lg">PHẦN II</span>
+                        TRẮC NGHIỆM ĐÚNG / SAI
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">Trong mỗi ý a), b), c), d) ở mỗi câu, thí sinh chọn Đúng hoặc Sai.</p>
+                </div>
+                <div id="part2Questions" class="space-y-8"></div>
+            </div>
+
+            <div class="flex justify-end pt-4">
+                <button onclick="submitQuiz()" class="px-8 py-3.5 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold rounded-xl shadow-lg shadow-emerald-200 transition flex items-center gap-2">
+                    <i data-lucide="send" class="w-5 h-5"></i> Nộp Bài Kiểm Tra
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Navigation Sidebar (Right Column) -->
+        <div class="lg:col-span-1">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm sticky top-20 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-700 text-sm flex items-center gap-2">
+                        <i data-lucide="layout-grid" class="w-4 h-4 text-indigo-600"></i> Danh Sách Câu Hỏi
+                    </h3>
+                    <span id="answeredCount" class="text-xs bg-slate-100 text-slate-600 font-semibold px-2 py-0.5 rounded-full">0/54</span>
+                </div>
+
+                <div class="max-h-[60vh] overflow-y-auto custom-scrollbar pr-1 space-y-4">
+                    <div>
+                        <p class="text-xs font-semibold text-slate-400 mb-2 uppercase">Phần I (1 - 50)</p>
+                        <div id="part1Nav" class="grid grid-cols-5 gap-1.5"></div>
+                    </div>
+                    <div>
+                        <p class="text-xs font-semibold text-slate-400 mb-2 uppercase">Phần II (Câu 1 - 4)</p>
+                        <div id="part2Nav" class="grid grid-cols-2 gap-2"></div>
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100">
+                    <button onclick="submitQuiz()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm rounded-xl transition flex items-center justify-center gap-1.5">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> Nộp bài
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STEP 3: RESULT & LEADERBOARD SCREEN -->
+    <div id="resultScreen" class="hidden max-w-3xl mx-auto space-y-6">
+        <!-- Score Card -->
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-100 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
+            
+            <span class="inline-block p-3 bg-amber-100 text-amber-600 rounded-full mb-2">
+                <i data-lucide="award" class="w-8 h-8"></i>
+            </span>
+            <h2 class="text-2xl font-bold text-slate-800">Kết Quả Kiểm Tra</h2>
+            <p id="resultStudentInfo" class="text-sm text-slate-500 mt-1 font-medium"></p>
+
+            <div class="my-6 inline-flex flex-col items-center justify-center p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Điểm Số Đạt Được</span>
+                <span id="finalScore" class="text-5xl font-black text-indigo-600">0.00</span>
+                <span class="text-xs font-semibold text-slate-500 mt-1">trên thang điểm 10.0</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-left max-w-lg mx-auto text-xs bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <div>
+                    <span class="text-slate-400 block">Thời gian làm:</span>
+                    <strong id="resultTimeSpent" class="text-slate-700 text-sm">--:--</strong>
+                </div>
+                <div>
+                    <span class="text-slate-400 block">Phần I (Nhiều LC):</span>
+                    <strong id="resultPart1Detail" class="text-slate-700 text-sm">0/50 câu</strong>
+                </div>
+                <div>
+                    <span class="text-slate-400 block">Phần II (Đúng/Sai):</span>
+                    <strong id="resultPart2Detail" class="text-slate-700 text-sm">0/16 ý</strong>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-wrap justify-center gap-3">
+                <button onclick="location.reload()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm transition flex items-center gap-1.5">
+                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Làm lại bài
+                </button>
+                <button onclick="toggleReviewMode()" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition flex items-center gap-1.5">
+                    <i data-lucide="eye" class="w-4 h-4"></i> Xem chi tiết đáp án
+                </button>
+            </div>
+        </div>
+
+        <!-- Leaderboard Card -->
+        <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+                <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
+                    <i data-lucide="trophy" class="w-5 h-5 text-amber-500"></i> Bảng Xếp Hạng Lớp
+                </h3>
+                <button onclick="clearLeaderboard()" class="text-xs text-rose-500 hover:underline flex items-center gap-1">
+                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Xóa dữ liệu
+                </button>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="text-xs font-semibold text-slate-400 uppercase border-b border-slate-100">
+                            <th class="pb-3 pl-2">Hạng</th>
+                            <th class="pb-3">Họ & Tên</th>
+                            <th class="pb-3">Lớp</th>
+                            <th class="pb-3">Trường</th>
+                            <th class="pb-3 text-right pr-2">Điểm</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody" class="divide-y divide-slate-100 font-medium text-slate-700">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-white border-t border-slate-200 py-4 mt-8 text-center text-xs text-slate-400">
+    <p>© Hệ thống kiểm tra trực tuyến THPT - Môn Lịch Sử 12 (Bộ Kết Nối Tri Thức)</p>
+</footer>
+
+<!-- QUIZ DATA & LOGIC -->
+<script>
+    // DATA SET
+    const part1Data = [
+        { id: 1, question: "Khi CTTG thứ hai đang diễn ra, các nước Đồng minh chống phát xít mong muốn", options: ["thành lập tổ chức Liên hợp quốc nhằm duy trì hoà bình, an ninh thế giới.", "hợp tác giữa các nước nhằm khắc phục hậu quả sau chiến tranh.", "thiết lập một trật tự thế giới đa cực, nhiều trung tâm.", "thành lập toà án quốc tế để xét xử tội phạm chiến tranh."], answer: 0 },
+        { id: 2, question: "Các quốc gia trên thế giới tổ chức hội nghị thành lập Liên hợp quốc khi", options: ["Chiến tranh thế giới thứ hai bùng nổ.", "Chiến tranh thế giới thứ hai chưa diễn ra.", "Chiến tranh thế giới thứ hai sắp kết thúc.", "Chiến tranh thế giới thứ hai đã kết thúc."], answer: 2 },
+        { id: 3, question: "Năm 1945, Hiến chương Liên Hợp quốc thông qua tại đâu?", options: ["Xan phranxixcô (Mĩ ).", "Luân Đôn (Anh ).", "Rô-ma (Italia).", "Pa-ri (Pháp)."], answer: 0 },
+        { id: 4, question: "Sự kiện nào dưới đây gắn liền với ngày 24-10-1945?", options: ["Mĩ và Liên Xô phê chuẩn bản Hiến chương Liên hợp quốc.", "Liên hợp quốc chính thức được thành lập.", "Hội nghị Xan Phranxixcô (Mĩ) thông qua bản Hiến chương Liên hợp quốc.", "Ủy viên thường trực Hội đồng Bảo an thông qua bản Hiến chương."], answer: 1 },
+        { id: 5, question: "Trong số các mục tiêu của Liên hợp quốc, mục tiêu nào được chú trọng và là cơ sở để thực hiện các mục tiêu khác?", options: ["Duy trì hòa bình và an ninh quốc tế.", "Thúc đẩy quan hệ hữu nghị các dân tộc.", "Thúc đẩy hợp tác quốc tế để giải quyết các vấn đề kinh tế, xã hội, văn hoá, nhân đạo.", "Liên hợp quốc đóng vai trò là trung tâm điều hoà các nỗ lực quốc tế."], answer: 0 },
+        { id: 6, question: "Nội dung nào dưới đây không phải là nguyên tắc hoạt động của tổ chức Liên hợp quốc?", options: ["Giải quyết các tranh chấp quốc tế bằng biện pháp hòa bình.", "Từ bỏ đe doạ bằng vũ lực hoặc sử dụng vũ lực quốctrong quan hệ quốc tế.", "Hợp tác phát triển có hiệu quả trong các lĩnh vực kinh tế, văn hoá, xã hội.", "Không can thiệp vào công việc nội bộ của các nước."], answer: 2 },
+        { id: 7, question: "Ngày 1- 1- 1942, đại diện 26 nước chống phát xít đã", options: ["thành lập Liên hợp quốc.", "họp hội nghị Tê-hê-ran.", "thoả thuận một số điểm cơ bản về cơ cấu Liên hợp quốc.", "kí bản Tuyên bố về Liên hợp quốc."], answer: 3 },
+        { id: 8, question: "Năm 1947, Đại hội đồng Liên hợp quốc lấy ngày 24 tháng 10 hằng năm làm", options: ["“Ngày Liên hợp quốc”.", "“Ngày Hòa bình thế giới”.", "“Ngày chống phát xít”.", "“Ngày Bảo vệ môi trường”."], answer: 0 },
+        { id: 9, question: "Một trong những nguyên tắc hoạt động của Liên hợp quốc là", options: ["Bình đẳng về chủ quyền quốc gia.", "Hợp tác phát triển có hiệu quả về kinh tế, văn hóa, xã hội.", "Chung sống hòa bình, vừa hợp tác vừa đấu tranh.", "Tiến hành hợp tác quốc tế bằng biện pháp hòa bình."], answer: 0 },
+        { id: 10, question: "Cho các sự kiện sau:\n1. Hội nghị quốc tế tại Ianta (Liên Xô).\n2. Hội nghị Tê-hê-ran (I-ran).\n3. Hội nghị quốc tế tại Xan Phranxixcô (Mỹ).\n4. Đại diện 26 nước chống phát xít kí bản Tuyên bố về Liên hợp quốc.\nHãy sắp xếp các sự kiện trên theo đúng trình tự thời gian.", options: ["1, 3, 2, 4.", "4, 2, 1, 3.", "3, 1, 2, 4.", "1, 3, 4, 2."], answer: 1 },
+        { id: 11, question: "Mục tiêu phát triển Thiên niên kỉ của Liên hợp quốc đã được Hội nghị Thượng đỉnh Thiên niên kỉ (9-2000) thông qua, không bao gồm:", options: ["Xoá đói giảm nghèo.", "Thực hiện bình đẳng giới.", "Đảm bảo bền vững về môi trường.", "Hạn chế vũ khí hạt nhân."], answer: 3 },
+        { id: 12, question: "Trụ sở chính của tổ chức Liên hợp quốc đặt tại", options: ["Niu Ooc ( Mỹ ).", "Pari ( Pháp).", "Luân Đôn ( Anh ).", "La hay ( Hà Lan )."], answer: 0 },
+        { id: 13, question: "“Thúc đẩy quan hệ hữu nghị giữa các dân tộc trên cơ sở tôn trọng quyền bình đẳng, quyền tự quyết dân tộc và củng cố hoà bình thế giới” là mục tiêu của tổ chức", options: ["Liên hợp quốc.", "Liên minh Châu Âu (EU).", "Hiệp hội các quốc gia Đông Nam Á (ASEAN).", "Diễn đàn hợp tác Á- Âu (ASEM)."], answer: 0 },
+        { id: 14, question: "Cơ quan chuyên môn nào của Liên hợp quốc đóng góp trong việc giúp Việt Nam bảo toàn di sản văn hoá?", options: ["UNICEF.", "UNESCO.", "FAO.", "WHO."], answer: 1 },
+        { id: 15, question: "Tổ chức nào sau đây không thuộc Liên hợp quốc?", options: ["UNICEF.", "WTO.", "UNESCO.", "NATO."], answer: 3 },
+        { id: 16, question: "Hiến chương Liên hợp quốc được thông qua tại hội nghị nào?", options: ["Hội nghị Ianta.", "Hội nghị Xan Phranxico.", "Hội nghị Pốtxđam.", "Hội nghị Pari."], answer: 1 },
+        { id: 17, question: "Cơ quan nào của Liên hợp quốc có vai trò trọng yếu trong việc duy trì hòa bình, an ninh thế giới?", options: ["Tòa án Quốc tế.", "Hội đồng Bảo an.", "Đại hội đồng.", "Ban Thư kí."], answer: 1 },
+        { id: 18, question: "Hình ảnh mục tiêu phát triển bền vững của LHQ bao gồm các biểu tượng về xóa nghèo, xóa đói, sức khỏe, giáo dục, bình đẳng giới, nước sạch. Hình ảnh số 6 trong chuỗi biểu tượng thể hiện nội dung nào?", options: ["Nước sạch và vệ sinh.", "Cuộc sống khỏe mạnh.", "Năng lượng sạch và bền vững.", "Giảm bất bình đẳng."], answer: 0 },
+        { id: 19, question: "Biểu tượng có chữ WHO cùng hình gậy rắn bọc quanh bản đồ thế giới là biểu tượng của tổ chức nào?", options: ["WHO.", "UNESCO.", "FAO.", "UNCTAD."], answer: 0 },
+        { id: 20, question: "Việt Nam được Liên Hợp quốc chọn là quốc gia", options: ["chống biến đổi khí hậu.", "thực hiện bảo vệ môi trường biển.", "thực hiện bảo vệ rừng nguyên sinh.", "thực hiện mục tiêu thiên niên kỷ."], answer: 3 },
+        { id: 21, question: "Đâu không phải là vai trò của Liên hợp quốc từ khi thành lập đến nay?", options: ["Duy trì hoà bình và an ninh thế giới.", "Mở rộng kết nạp thành viên trên toàn thế giới.", "Thúc đẩy kinh tế, tài chính, thương mại quốc tế và nâng cao đời sống nhân dân.", "Đảm bảo quyền con người, phát triển văn hoá, xã hội."], answer: 1 },
+        { id: 22, question: "Vai trò quan trọng hàng đầu của tổ chức Liên hợp quốc đã thực hiện từ khi thành lập đến nay là gì?", options: ["Là trung gian hoà giải mọi tranh chấp quốc tế giữa các dân tộc.", "Góp phần ngăn chặn được nguy cơ bùng nổ cuộc chiến tranh thế giới mới.", "Thúc đẩy quan hệ hợp tác kinh tế, văn hoá giữa các nước thành viên.", "Là trung tâm giải quyết các mâu thuẫn về vấn đề dân tộc trên thế giới."], answer: 1 },
+        { id: 23, question: "Nguyên tắc “Giải quyết các tranh chấp quốc tế bằng biện pháp hòa bình” của Liên hợp quốc được Việt Nam vận dụng để giải quyết vấn đề nào hiện nay?", options: ["Thực hiện công nghiệp hóa và hiện đại hóa đất nước.", "Phát triển nền kinh tế thị trường theo định hướng XHCN.", "Bảo vệ chủ quyền biên giới, biển, hải đảo và toàn vẹn lãnh thổ.", "Nâng cao vị thế của Việt Nam trên trường quốc tế."], answer: 2 },
+        { id: 24, question: "Bản Hiến chương (thông qua năm 1945) là văn kiện quan trọng nhất của tổ chức Liên hợp quốc, vì lí do nào sau đây?", options: ["Tạo cơ sở pháp lí để các nước tham gia Liên hợp quốc.", "Nêu rõ mục đích hoạt động của tổ chức Liên hợp quốc.", "Quy định tổ chức, bộ máy của Liên hợp quốc.", "Đề ra nguyên tắc hoạt động của tổ chức Liên hợp quốc."], answer: 0 },
+        { id: 25, question: "Liên hợp quốc được thành lập năm 1945 không nhằm mục đích nào sau đây?", options: ["Duy trì hoà bình và an ninh thế giới.", "Thúc đẩy hợp tác quốc tế giữa các nước thành viên.", "Là trung tâm điều hoà các nỗ lực quốc tế.", "Duy trì trật tự thế giới hai cực Ianta."], answer: 3 },
+        { id: 26, question: "Văn kiện nào của Đại hội đồng Liên hợp quốc được thông qua năm 1948 được coi là văn kiện đầu tiên của bộ luật quốc tế về quyền con người?", options: ["Tuyên ngôn quốc tế nhân quyền.", "Tuyên ngôn Nhân quyền và Dân quyền.", "Tuyên ngôn Thiên niên kỉ của Liên hợp quốc.", "Tuyên ngôn Viên và Chương trình hành động."], answer: 0 },
+        { id: 27, question: "Đâu được xem là công cụ chủ yếu để phát triển kinh tế của các nước thành viên Liên hợp quốc?", options: ["Thương mại quốc tế.", "Công cụ pháp lí.", "Thuế.", "Hệ thống tiền tệ."], answer: 0 },
+        { id: 28, question: "Đâu không phải là vai trò của Liên hợp quốc trong việc duy trì hoà bình, an ninh quốc tế?", options: ["Ngăn không để bất cứ một cuộc chiến tranh nào xảy ra.", "Triển khai nhiều hoạt động nhằm gìn giữ hoà bình ở nhiều khu vực trên thế giới.", "Soạn thảo và xây dựng hệ thống các công ước quốc tế về giải trừ quân bị, chống chạy đua vũ trang.", "Thúc đẩy quá trình giành độc lập dân tộc của các nước thuộc địa và phụ thuộc."], answer: 0 },
+        { id: 29, question: "Đâu không phải là vai trò của Liên hợp quốc trong việc đảm bảo quyền con người và phát triển văn hoá, xã hội?", options: ["Xây dựng và kí kết những văn bản, điều ước quốc tế quan trọng nhằm đảm bảo các quyền cơ bản của con người.", "Tiến hành các hoạt động thúc đẩy sự hợp tác quốc tế giữa các quốc gia nhằm phát triển văn hoá, xã hội.", "Xây dựng các quỹ tài trợ quốc tế để phát triển văn hoá, xã hội.", "Hỗ trợ quá trình tái thiết ở nhiều quốc gia."], answer: 3 },
+        { id: 30, question: "Công cụ để duy trì trật tự thế giới mới sau Chiến tranh thế giới thứ hai là:", options: ["Liên hợp quốc.", "Hội Quốc liên.", "Trật tự I-an-ta.", "Hiến chương Liên hợp quốc."], answer: 0 },
+        { id: 31, question: "Cụm từ viết tắt của tổ chức kinh tế, thương mại lớn nhất trực thuộc Liên hợp quốc là:", options: ["UNCTAD.", "ASCC.", "APSC.", "ZOPFAN."], answer: 0 },
+        { id: 32, question: "Tổ chức toàn cầu lớn nhất thế giới là:", options: ["Liên hợp quốc.", "Liên minh châu Âu.", "Tổ chức thương mại thế giới.", "Tổ chức Hiệp ước Bắc Đại Tây Dương."], answer: 0 },
+        { id: 33, question: "Người da đen đầu tiên đảm nhận chức Tổng Thư ký Liên hợp quốc nhận giải Nô-ben Hoà bình là ai?", options: ["Kofi Annan.", "Ban Ki-moon.", "António Guterres.", "U Thant."], answer: 0 },
+        { id: 34, question: "Tổ chức Liên hợp quốc được thành lập trên cơ sở quyết định của hội nghị", options: ["Ianta (Liên Xô) và Oasinhtơn (Mỹ).", "Xan Phranxcô (Mỹ) và Pốtxđam (Đức).", "Pốtxđam (Đức) và Ianta (Liên Xô).", "Ianta (Liên Xô) và Xan Phranxcô (Mỹ)."], answer: 3 },
+        { id: 35, question: "Tổng thư kí Liên hợp quốc từ năm 2017 đến nay là người nước nào?", options: ["Bồ Đào Nha.", "Hàn Quốc.", "Na-uy.", "Áo."], answer: 0 },
+        { id: 36, question: "UN là tên viết tắt của tổ chức nào sau đây?", options: ["Hội Quốc liên.", "Liên hợp quốc.", "Liên minh châu Âu.", "Diễn đàn hợp tác Á – Âu."], answer: 1 },
+        { id: 37, question: "Theo nguyên tắc nhất trí giữa 5 nước Ủy viên thường trực, một quyết định của Hội đồng Bảo an Liên hợp quốc sẽ chắc chắn được thông qua khi", options: ["chỉ có ít nước bỏ phiếu chống.", "không có nước nào bỏ phiếu trống.", "không có nước nào bỏ phiếu trắng.", "phần lớn các nước bỏ phiếu thuận."], answer: 1 },
+        { id: 38, question: "Một trong những cơ quan chính của Liên hợp quốc được qui định trong Hiến chương (năm 1945) là", options: ["Ngân hàng thế giới.", "Quĩ nhi đồng.", "Đại hội đồng.", "Tổ chức Y tế Thế giới."], answer: 2 },
+        { id: 39, question: "Đâu không phải là mục tiêu, hành động mang tính toàn cầu được đề ra trong Chương trình nghị sự 2030 của tổ chức Liên hợp quốc?", options: ["Xóa nghèo.", "Bình đẳng giới.", "Chất lượng giáo dục.", "Giải trừ quân bị."], answer: 3 },
+        { id: 40, question: "Điểm giống nhau giữa Hội Quốc liên và Liên hợp quốc là", options: ["đều là tổ chức bảo vệ quyền lợi nhân dân yêu chuộng hòa bình thế giới", "đều diễn ra khi chiến tranh thế giới bùng nổ.", "đều thành lập được tổ chức quốc tế để giám sát và duy trì trật tự thế giới", "đều bảo vệ quyền lợi của các nước tư bản."], answer: 2 },
+        { id: 41, question: "So với Hội Quốc liên, Liên hợp quốc có điểm gì tiến bộ về vai trò và tổ chức?", options: ["Diễn ra cuộc đối đầu gay gắt giưuax hai phe trong nội bộ tổ chức.", "Mang tính toàn diện, tất cả các nước không phân biệt lớn nhỏ có thể tham gia.", "Tác động đến sự sụp đổ Chiến tranh lạnh, hình thành xu thế thế giới mới.", "Củng cố hơn vai trò của liên Xô trong phong trào giải phóng dân tộc."], answer: 1 },
+        { id: 42, question: "Mối quan hệ giữa các nước thành viên của Liên hợp quốc được xây dựng dựa trên nền tảng", options: ["Tôn trọng quyền bình đẳng và quyền tự quyết của các dân tộc.", "Tôn trọng quyền độc lập và tự quyết của các dân tộc.", "Tôn trọng quyền bình đẳng và tự chủ của các dân tộc.", "Tôn trọng quyền tự quyết và toàn vẹn lãnh thổ của các dân tộc."], answer: 0 },
+        { id: 43, question: "Đâu không phải là thách thức của Liên hợp quốc hiện nay?", options: ["Thách thức đối với uy tín của tổ chức.", "Thách thức trong thực hiện nhiệm vụ duy trì hoà bình, an ninh quốc tế sau Chiến tranh lạnh.", "Hiệu quả hoạt động của tổ chức không như kì vọng.", "Việc kết nạp thành viên còn nhiểu trở ngại về thể chế."], answer: 3 },
+        { id: 44, question: "Nhận xét nào sau đây phản ánh đúng vai trò của Liên hợp quốc trước những biến động của tình hình thế giới hiện nay?", options: ["Đi đầu trong đấu tranh bảo vệ chủ quyền và quyền tự quyết của các dân tộc.", "Là diễn đàn đi đầu trong việc bảo vệ các di sản thế giới, cứu trợ nhân đạo.", "Có vai trò quyết định ngăn chặn đại dịch, đe doạ sức khoẻ của loài người.", "Góp phần thủ tiêu chủ nghĩa thực dân và chủ nghĩa phân biệt chủng tộc."], answer: 1 },
+        { id: 45, question: "Với tư cách là Uỷ viên thường trực của Hội đồng Bảo an Liên hợp quốc, Liên Xô đã", options: ["hạn chế được những thao túng của Mĩ ở Liên hợp quốc.", "làm thất bại âm mưu của Mĩ trong chiến lược toàn cầu.", "duy trì sự lớn mạnh của phe XHCN trong Liên hợp quốc.", "có nhiều đóng góp trong việc kết thúc nhanh cuộc Chiến tranh lạnh."], answer: 0 },
+        { id: 46, question: "Từ khi gia nhập Liên hợp quốc, Việt Nam đã có những đóng góp vào việc", options: ["tham gia chương trình chống tham nhũng, xóa đói giảm nghèo, quyền trẻ em...", "có tiếng nói quan trọng nhất trong tổ chức Liên hợp quốc.", "trở thành ủy viên thường trực Hội đồng Bảo an nhiệm kì 2008-2009.", "xây dựng mối quan hệ hợp tác, có hiệu quả trên tất cả các lĩnh vực."], answer: 0 },
+        { id: 47, question: "Nhận định nào sau đây phản ánh đúng vị trí, vai trò của Liên hợp quốc?", options: ["Là một tổ chức quốc tế phát triển năng động vì sự ổn định, hợp tác của toàn thế giới.", "Là một diễn đàn quốc tế lớn nhất, vừa hợp tác, vừa đấu tranh vì hoà bình, an ninh thế giới.", "Là một tổ chức quốc tế tạo dựng quan hệ thân thiện với tất cả các nước trên thế giới.", "Là một liên minh chính trị - quân sự của các nước tư bản phương Tây do Mỹ đứng đầu."], answer: 1 },
+        { id: 48, question: "Việt Nam gia nhập Liên hợp quốc trong bối cảnh nào sau đây?", options: ["Cả nước hoàn thành cuộc cách mạng dân tộc dân chủ nhân dân.", "Cả nước đã hoàn thành cách mạng xã hội chủ nghĩa ở miền Bắc.", "Chiến tranh lạnh và cuộc đối đầu Đông – Tây đã kết thúc.", "Chưa hoàn thành cuộc kháng chiến chống Mĩ cứu nước."], answer: 0 },
+        { id: 49, question: "Việt Nam gia nhập Liên hợp quốc trong bối cảnh nào sau đây?", options: ["Đang chuẩn bị cho công cuộc thống nhất đất nước về mặt nhà nước.", "Cuộc Chiến tranh lạnh và những đối đầu Đông – Tây đã được kết thúc.", "Xu thế hoà hoãn Đông – Tây đang diễn ra, quan hệ quốc tế dần hoà dịu.", "Chưa hoàn thành cuộc cách mạng dân tộc dân chủ nhân dân trên cả nước."], answer: 2 },
+        { id: 50, question: "Phát biểu nào sau đây là đúng khi nói về tổ chức Liên hợp quốc?", options: ["Liên hợp quốc thành lập nhằm giải quyết những hậu quả của Chiến tranh thế giới thứ hai.", "Liên hợp quốc đã giải quyết được tất cả các vấn đề về hoà bình và an ninh thế giới.", "Liên hợp quốc là tổ chức toàn cầu có vai trò hết sức quan trọng trong đời sống chính trị quốc tế.", "Liên hợp quốc là một liên kết chính trị-kinh tế lớn nhất hành tinh vì sự ổn định của toàn nhân loại."], answer: 2 }
+    ];
+
+    const part2Data = [
+        {
+            id: 1,
+            context: "Đọc đoạn tư liệu sau đây:\n“Vào giai đoạn cuối của Chiến tranh thế giới thứ hai, tình hình thế giới có những chuyển biến quan trọng. Sức mạnh và ưu thế trên chiến trường thuộc về phe Đồng minh chống phát xít. Việc tổ chức lại trật tự thế giới sau chiến tranh càng trở nên cấp bách. Chiến tranh diễn ra càng khốc liệt thì ý tưởng về một tổ chức quốc tế thực sự có vai trò trong việc duy trì hòa bình thế giới càng rõ nét”\n(Trích SGKLS lớp 12 trang 7 – Bộ KNTN, NXB GDVN năm 2024)",
+            items: [
+                { key: 'a', text: "Ý tưởng thành lập một tổ chức quốc tế để duy trì hòa bình thế giới xuất hiện ngay từ đầu Chiến tranh thế giới thứ hai.", answer: false },
+                { key: 'b', text: "Ngay từ đầu chiến tranh, ưu thế đã thuộc về phe Đồng minh.", answer: false },
+                { key: 'c', text: "Yêu cầu cấp bách đặt ra cho các nước phe Đồng minh là phải tổ chức lại trật tự thế giới sau chiến tranh.", answer: true },
+                { key: 'd', text: "Chiến tranh khốc liệt là yếu tố thôi thúc thành lập một tổ chức quốc tế để duy trì hòa bình.", answer: true }
+            ]
+        },
+        {
+            id: 2,
+            context: "Đọc đoạn tư liệu sau đây:\n“Từ năm 1960, Đại hội đồng Liên hợp quốc đề ra các chiến lược phát triển cho từng thập kỉ nhằm huy động hợp tác quốc tế cho các mục tiêu phát triển chung. Một trong những ưu tiên của Liên hợp quốc là tạo môi trường kinh tế, thương mại, tài chính quốc tế bình đẳng và quan tâm thích đáng đến lợi ích của các nước thành viên”\n(Trích SGKLS lớp 12 trang 10 – Bộ KNTN, NXB GDVN năm 2024)",
+            items: [
+                { key: 'a', text: "Ngay từ khi thành lập, Đại hội đồng Liên hợp quốc đề ra chiến lược phát triển.", answer: false },
+                { key: 'b', text: "Trong chiến lược phát triển Liên hợp quốc chú trọng yếu tố bình đẳng về mọi mặt.", answer: true },
+                { key: 'c', text: "Trong hợp tác quốc tế lợi ích của các nước lớn luôn được Liên hợp quốc ưu tiên.", answer: false },
+                { key: 'd', text: "Liên hợp quốc là tổ chức chính trị, không quan tâm đến phát triển kinh tế, thương mại, tài chính.", answer: false }
+            ]
+        },
+        {
+            id: 3,
+            context: "Đọc đoạn tư liệu sau đây:\n“Thông qua các tổ chức chuyên môn và các quỹ trực thuộc, Liên hợp quốc đã thực hiện nhiều dự án, đóng vai trò quan trọng trong việc cải thiện, nâng cao đời sống của người dân và hỗ trợ cho công tác xóa đói, giảm nghèo, đặc biệt là ở các nước đang phát triển”.\n(Trích SGKLS lớp 12 trang 10 – Bộ KNTN, NXB GDVN năm 2024)",
+            items: [
+                { key: 'a', text: "Xóa đói, giảm nghèo là mục tiêu quan trọng nhất của Liên hợp quốc.", answer: false },
+                { key: 'b', text: "Liên Hợp quốc chú trọng cải thiện đời sống người dân ở các nước phát triển.", answer: false },
+                { key: 'c', text: "Để thực hiện xóa đói, giảm nghèo Liên hợp quốc đã thông qua các công ty thương mại.", answer: false },
+                { key: 'd', text: "Các dự án xóa đói, giảm nghèo của Liên hợp quốc quan tâm đặc biệt đến các nước đang phát triển.", answer: true }
+            ]
+        },
+        {
+            id: 4,
+            context: "Đọc đoạn tư liệu sau đây:\n“Các nguyên tắc hoạt động của Liên hợp quốc bao gồm: Bình đẳng về chủ quyền quốc gia; Tôn trọng toàn vẹn lãnh thổ và độc lập chính trị quốc gia; Từ bỏ đe dọa bằng vũ lực hoặc sử dụng vũ lực trong quan hệ quốc tế; Không can thiệp vào công việc nội bộ các nước; Tôn trọng nghĩa vụ quốc tế và luật pháp quốc tế; Giải quyết các tranh chấp quốc tế bằng biện pháp hòa bình”.\n(Trích SGKLS lớp 12 trang 9 – Bộ KNTN, NXB GDVN năm 2024)",
+            items: [
+                { key: 'a', text: "Hòa bình là ưu tiên hàng đầu trong giải quyết mâu thuẫn giữa các nước.", answer: true },
+                { key: 'b', text: "Cho phép các nước lớn được can thiệp vào các nước nhỏ.", answer: false },
+                { key: 'c', text: "Việc sử dụng vũ lực là cần thiết trong quan hệ quốc tế.", answer: false },
+                { key: 'd', text: "Tất cả các nước thành viên của Liên hợp quốc phải tuân theo một thể chế nhà nước.", answer: false }
+            ]
+        }
+    ];
+
+    // APP STATE
+    let studentInfo = {};
+    let userAnswersPart1 = {};
+    let userAnswersPart2 = {};
+    let timerInterval = null;
+    let timeLeft = 45 * 60; // 45 phút
+    let isSubmitted = false;
+
+    // INIT RENDER
+    window.onload = function() {
+        lucide.createIcons();
+        renderQuestions();
+        renderNavigation();
+    };
+
+    function renderQuestions() {
+        // Render Part 1
+        const p1Container = document.getElementById('part1Questions');
+        p1Container.innerHTML = part1Data.map((q, idx) => `
+            <div id="p1-q${q.id}" class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 transition hover:border-slate-300">
+                <p class="font-semibold text-slate-800 text-sm mb-3">
+                    <span class="text-indigo-600 font-bold">Câu ${q.id}:</span> ${q.question}
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    ${q.options.map((opt, oIdx) => `
+                        <label class="flex items-start gap-2.5 p-3 rounded-lg bg-white border border-slate-200 cursor-pointer hover:bg-indigo-50/50 hover:border-indigo-200 transition text-xs leading-relaxed">
+                            <input type="radio" name="p1_q${q.id}" value="${oIdx}" onchange="selectPart1(${q.id},${oIdx})" class="mt-0.5 text-indigo-600 focus:ring-indigo-500">
+                            <span><strong class="text-slate-600">${String.fromCharCode(65 + oIdx)}.</strong>${opt}</span>
+                        </label>
+                    `).join('')}
+                </div>
+                <div id="p1-explain-${q.id}" class="hidden mt-3 p-3 rounded-lg text-xs bg-slate-100 border border-slate-200"></div>
+            </div>
+        `).join('');
+
+        // Render Part 2
+        const p2Container = document.getElementById('part2Questions');
+        p2Container.innerHTML = part2Data.map((q) => `
+            <div id="p2-q${q.id}" class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 transition hover:border-slate-300">
+                <p class="font-semibold text-slate-800 text-sm mb-2 text-indigo-600">Câu ${q.id} (Trắc nghiệm Đúng/Sai):</p>
+                <div class="bg-amber-50/60 border border-amber-200/60 p-3.5 rounded-lg text-xs text-amber-900 leading-relaxed whitespace-pre-line mb-3 font-medium">
+                    ${q.context}
+                </div>
+                <div class="space-y-2">
+                    ${q.items.map((item) => `
+                        <div class="p-3 bg-white border border-slate-200 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                            <span class="flex-grow font-medium text-slate-700"><strong>${item.key})</strong>${item.text}</span>
+                            <div class="flex items-center gap-3 shrink-0">
+                                <label class="inline-flex items-center gap-1 cursor-pointer">
+                                    <input type="radio" name="p2_q${q.id}_${item.key}" value="true" onchange="selectPart2(${q.id}, '${item.key}', true)" class="text-indigo-600 focus:ring-indigo-500">
+                                    <span class="font-semibold text-emerald-600">Đúng</span>
+                                </label>
+                                <label class="inline-flex items-center gap-1 cursor-pointer">
+                                    <input type="radio" name="p2_q${q.id}_${item.key}" value="false" onchange="selectPart2(${q.id}, '${item.key}', false)" class="text-indigo-600 focus:ring-indigo-500">
+                                    <span class="font-semibold text-rose-600">Sai</span>
+                                </label>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div id="p2-explain-${q.id}" class="hidden mt-3 p-3 rounded-lg text-xs bg-slate-100 border border-slate-200"></div>
+            </div>
+        `).join('');
+    }
+
+    function renderNavigation() {
+        const p1Nav = document.getElementById('part1Nav');
+        p1Nav.innerHTML = part1Data.map(q => `
+            <button id="nav-p1-${q.id}" onclick="scrollToQuestion('p1-q${q.id}')" class="h-8 text-xs font-semibold rounded-lg bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200 flex items-center justify-center transition">
+                ${q.id}
+            </button>
+        `).join('');
+
+        const p2Nav = document.getElementById('part2Nav');
+        p2Nav.innerHTML = part2Data.map(q => `
+            <button id="nav-p2-${q.id}" onclick="scrollToQuestion('p2-q${q.id}')" class="h-8 text-xs font-semibold rounded-lg bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200 flex items-center justify-center transition">
+                Câu ${q.id}
+            </button>
+        `).join('');
+    }
+
+    // USER ACTIONS
+    function startQuiz(e) {
+        e.preventDefault();
+        studentInfo = {
+            name: document.getElementById('studentName').value.trim(),
+            school: document.getElementById('schoolName').value.trim(),
+            className: document.getElementById('className').value.trim()
+        };
+
+        document.getElementById('startScreen').classList.add('hidden');
+        document.getElementById('quizScreen').classList.remove('hidden');
+        document.getElementById('timerContainer').classList.remove('hidden');
+        document.getElementById('timerContainer').classList.add('flex');
+
+        startTimer();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function selectPart1(qId, optionIdx) {
+        if (isSubmitted) return;
+        userAnswersPart1[qId] = optionIdx;
+        const btn = document.getElementById(`nav-p1-${qId}`);
+        btn.classList.remove('bg-slate-100', 'text-slate-600');
+        btn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-600');
+        updateAnsweredCount();
+    }
+
+    function selectPart2(qId, itemKey, val) {
+        if (isSubmitted) return;
+        if (!userAnswersPart2[qId]) userAnswersPart2[qId] = {};
+        userAnswersPart2[qId][itemKey] = val;
+
+        // Check if all 4 items in this question answered
+        if (Object.keys(userAnswersPart2[qId]).length === 4) {
+            const btn = document.getElementById(`nav-p2-${qId}`);
+            btn.classList.remove('bg-slate-100', 'text-slate-600');
+            btn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-600');
+        }
+        updateAnsweredCount();
+    }
+
+    function updateAnsweredCount() {
+        const countP1 = Object.keys(userAnswersPart1).length;
+        const countP2 = Object.keys(userAnswersPart2).length;
+        document.getElementById('answeredCount').innerText = `${countP1 + countP2}/54`;
+    }
+
+    function scrollToQuestion(id) {
+        const el = document.getElementById(id);
+        if (el) {
+            const offset = 80;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = el.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert("Đã hết thời gian làm bài! Hệ thống sẽ tự động nộp bài.");
+                submitQuiz();
+            }
+        }, 1000);
+    }
+
+    // SCORING ENGINE (Bộ GD&ĐT Rules)
+    function submitQuiz() {
+        if (isSubmitted) return;
+
+        if (timeLeft > 0) {
+            const confirmSubmit = confirm("Bạn có chắc chắn muốn nộp bài kiểm tra không?");
+            if (!confirmSubmit) return;
+        }
+
+        isSubmitted = true;
+        clearInterval(timerInterval);
+
+        // Calculate Scores
+        // Part 1: 50 câu * 0.12 điểm = 6.0 điểm
+        let p1Correct = 0;
+        part1Data.forEach(q => {
+            if (userAnswersPart1[q.id] === q.answer) {
+                p1Correct++;
+            }
+        });
+        const p1Score = p1Correct * 0.12;
+
+        // Part 2: 4 câu * 1.0 điểm tối đa/câu = 4.0 điểm
+        // Quy tắc chấm điểm trắc nghiệm đúng sai Bộ GD:
+        // - Đúng 1 ý: 0.1 điểm
+        // - Đúng 2 ý: 0.25 điểm
+        // - Đúng 3 ý: 0.5 điểm
+        // - Đúng 4 ý: 1.0 điểm
+        let p2Score = 0;
+        let p2TotalCorrectItems = 0;
+
+        part2Data.forEach(q => {
+            let correctInQuestion = 0;
+            const userAns = userAnswersPart2[q.id] || {};
+
+            q.items.forEach(item => {
+                if (userAns[item.key] === item.answer) {
+                    correctInQuestion++;
+                    p2TotalCorrectItems++;
+                }
+            });
+
+            if (correctInQuestion === 1) p2Score += 0.1;
+            else if (correctInQuestion === 2) p2Score += 0.25;
+            else if (correctInQuestion === 3) p2Score += 0.5;
+            else if (correctInQuestion === 4) p2Score += 1.0;
+        });
+
+        const finalScore = (p1Score + p2Score).toFixed(2);
+        const timeSpentSec = (45 * 60) - timeLeft;
+        const timeSpentFormatted = `${Math.floor(timeSpentSec / 60)} phút ${timeSpentSec % 60} giây`;
+
+        // Display Results
+        document.getElementById('quizScreen').classList.add('hidden');
+        document.getElementById('timerContainer').classList.add('hidden');
+        document.getElementById('resultScreen').classList.remove('hidden');
+
+        document.getElementById('resultStudentInfo').innerText = `${studentInfo.name} - Lớp ${studentInfo.className} - ${studentInfo.school}`;
+        document.getElementById('finalScore').innerText = finalScore;
+        document.getElementById('resultTimeSpent').innerText = timeSpentFormatted;
+        document.getElementById('resultPart1Detail').innerText = `${p1Correct}/50 câu (${p1Score.toFixed(2)}đ)`;
+        document.getElementById('resultPart2Detail').innerText = `${p2TotalCorrectItems}/16 ý (${p2Score.toFixed(2)}đ)`;
+
+        // Save & Render Leaderboard
+        saveLeaderboardRecord({
+            name: studentInfo.name,
+            className: studentInfo.className,
+            school: studentInfo.school,
+            score: parseFloat(finalScore),
+            timeSpent: timeSpentSec,
+            date: new Date().toLocaleDateString('vi-VN')
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // LEADERBOARD LOCALSTORAGE SYSTEM
+    function saveLeaderboardRecord(record) {
+        let list = JSON.parse(localStorage.getItem('his12_leaderboard') || '[]');
+        list.push(record);
+        // Sort by score DESC, then timeSpent ASC
+        list.sort((a, b) => b.score - a.score || a.timeSpent - b.timeSpent);
+        localStorage.setItem('his12_leaderboard', JSON.stringify(list));
+        renderLeaderboard();
+    }
+
+    function renderLeaderboard() {
+        const list = JSON.parse(localStorage.getItem('his12_leaderboard') || '[]');
+        const tbody = document.getElementById('leaderboardBody');
+
+        if (list.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="5" class="py-4 text-center text-slate-400">Chưa có kết quả nào được ghi nhận.</td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = list.slice(0, 10).map((rec, i) => `
+            <tr class="${i === 0 ? 'bg-amber-50/50' : i === 1 ? 'bg-slate-50' : i === 2 ? 'bg-orange-50/30' : ''}">
+                <td class="py-2.5 pl-2 font-bold">
+                    ${i === 0 ? '🥇 1' : i === 1 ? '🥈 2' : i === 2 ? '🥉 3' : `#${i + 1}`}
+                </td>
+                <td class="py-2.5 font-semibold text-slate-800">${rec.name}</td>
+                <td class="py-2.5">${rec.className}</td>
+                <td class="py-2.5">${rec.school}</td>
+                <td class="py-2.5 pr-2 text-right font-extrabold text-indigo-600">${rec.score.toFixed(2)}</td>
+            </tr>
+        `).join('');
+    }
+
+    function clearLeaderboard() {
+        if (confirm("Bạn có chắc chắn muốn xóa toàn bộ bảng xếp hạng đã lưu trên thiết bị này?")) {
+            localStorage.removeItem('his12_leaderboard');
+            renderLeaderboard();
+        }
+    }
+
+    function showLeaderboard() {
+        document.getElementById('startScreen').classList.add('hidden');
+        document.getElementById('resultScreen').classList.remove('hidden');
+        renderLeaderboard();
+    }
+
+    // REVIEW MODE - HIGHLIGHT ANSWERS
+    function toggleReviewMode() {
+        document.getElementById('resultScreen').classList.add('hidden');
+        document.getElementById('quizScreen').classList.remove('hidden');
+
+        // Highlight Part 1
+        part1Data.forEach(q => {
+            const userAns = userAnswersPart1[q.id];
+            const explainBox = document.getElementById(`p1-explain-${q.id}`);
+            
+            explainBox.classList.remove('hidden');
+            explainBox.innerHTML = `
+                <div class="font-semibold text-slate-700">
+                    Đáp án đúng: <span class="text-emerald-600 font-bold">${String.fromCharCode(65 + q.answer)}</span>. 
+                    Lựa chọn của bạn: <span class="${userAns === q.answer ? 'text-emerald-600 font-bold' : 'text-rose-600 font-bold'}">${userAns !== undefined ? String.fromCharCode(65 + userAns) : 'Chưa chọn'}</span>
+                </div>
+            `;
+        });
+
+        // Highlight Part 2
+        part2Data.forEach(q => {
+            const userAns = userAnswersPart2[q.id] || {};
+            const explainBox = document.getElementById(`p2-explain-${q.id}`);
+
+            explainBox.classList.remove('hidden');
+            explainBox.innerHTML = `
+                <div class="space-y-1">
+                    <p class="font-bold text-slate-700 mb-1">Đáp án chi tiết:</p>
+                    ${q.items.map(item => {
+                        const uVal = userAns[item.key];
+                        const isCorrect = uVal === item.answer;
+                        return `
+                            <div>
+                                • Ý <strong>${item.key})</strong>: Đáp án đúng là <strong class="text-indigo-600">${item.answer ? 'Đúng' : 'Sai'}</strong> | 
+                                Bạn chọn: <strong class="${isCorrect ? 'text-emerald-600' : 'text-rose-600'}">${uVal === undefined ? 'Chưa làm' : (uVal ? 'Đúng' : 'Sai')}</strong>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
